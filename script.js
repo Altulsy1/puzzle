@@ -28,8 +28,8 @@ let timerInterval = null;
 let timeLeft = 20;
 let canAnswer = true;
 const maxQuestions = 10;
-let currentUser = null;          // المستخدم الحالي
-let authMode = 'login';          // 'login' or 'signup'
+let currentUser = null;
+let authMode = 'login'; // 'login' or 'signup'
 
 // عناصر DOM
 const startScreen = document.getElementById('start-screen');
@@ -40,19 +40,48 @@ const endScreen = document.getElementById('end-screen');
 const authScreen = document.getElementById('auth-screen');
 const highscoresScreen = document.getElementById('highscores-screen');
 
+// ================== تحميل بيانات الألغاز مع إعادة المحاولة ==================
+window.onload = async function() {
+    await loadPuzzlesData();
+};
+
+async function loadPuzzlesData() {
+    try {
+        const response = await fetch('puzzles.json');
+        if (!response.ok) {
+            throw new Error(`فشل التحميل: ${response.status} ${response.statusText}`);
+        }
+        puzzlesData = await response.json();
+        console.log('✅ تم تحميل الألغاز بنجاح');
+
+        // إشارة مرئية للمستخدم
+        const userInfoDiv = document.getElementById('user-info');
+        if (userInfoDiv) {
+            userInfoDiv.innerHTML = '<span style="color: #9ae6b4;">✓ البيانات جاهزة</span>';
+        }
+    } catch (error) {
+        console.error('❌ فشل تحميل الألغاز:', error);
+        alert(`⚠️ تعذر تحميل ملف الألغاز: ${error.message}\nتأكد من أن الملف موجود وأنك تستخدم خادمًا محليًا (مثل Live Server).`);
+
+        // إعادة المحاولة بعد 3 ثوان
+        setTimeout(loadPuzzlesData, 3000);
+    }
+}
+
 // ================== مراقبة حالة المصادقة ==================
 auth.onAuthStateChanged(user => {
     currentUser = user;
     const userInfoDiv = document.getElementById('user-info');
     const authButton = document.getElementById('auth-button');
+
     if (user) {
         userInfoDiv.innerHTML = `👋 مرحباً، ${user.email}`;
         authButton.innerText = '🚪 تسجيل الخروج';
-        authButton.onclick = () => logout();
+        authButton.onclick = logout;
     } else {
         userInfoDiv.innerHTML = '';
         authButton.innerText = '🔑 تسجيل الدخول';
-        authButton.onclick = () => showAuthScreen();
+        authButton.onclick = showAuthScreen;
     }
 });
 
@@ -78,65 +107,20 @@ function handleAuth() {
 
     if (authMode === 'login') {
         auth.signInWithEmailAndPassword(email, password)
-            .then(() => {
-                goBackToStart();
-            })
-            .catch(error => {
-                messageEl.innerText = '❌ ' + error.message;
-            });
+            .then(() => goBackToStart())
+            .catch(error => messageEl.innerText = '❌ ' + error.message);
     } else {
         auth.createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                goBackToStart();
-            })
-            .catch(error => {
-                messageEl.innerText = '❌ ' + error.message;
-            });
+            .then(() => goBackToStart())
+            .catch(error => messageEl.innerText = '❌ ' + error.message);
     }
 }
 
 function logout() {
-    auth.signOut().then(() => {
-        goBackToStart();
-    });
+    auth.signOut().then(() => goBackToStart());
 }
 
-// ... (بداية الملف كما هي، مع تعريف المتغيرات العامة)
-
-// تحميل بيانات الألغاز مع إعادة المحاولة
-window.onload = async function() {
-    await loadPuzzlesData();
-};
-
-async function loadPuzzlesData() {
-    try {
-        const response = await fetch('puzzles.json');
-        if (!response.ok) throw new Error(`فشل التحميل: ${response.status}`);
-        puzzlesData = await response.json();
-        console.log('✅ تم تحميل الألغاز بنجاح');
-
-        // إشارة مرئية للمستخدم
-        const userInfoDiv = document.getElementById('user-info');
-        if (userInfoDiv) {
-            userInfoDiv.innerHTML += '<span style="color: #9ae6b4; margin-right: 10px;">✓ البيانات جاهزة</span>';
-        }
-    } catch (error) {
-        console.error('❌ فشل تحميل الألغاز:', error);
-        alert('⚠️ تعذر تحميل ملف الألغاز. تأكد من وجود puzzles.json في نفس المجلد. سيتم إعادة المحاولة...');
-        setTimeout(loadPuzzlesData, 3000); // إعادة المحاولة بعد 3 ثوان
-    }
-}
-
-// دالة بدء اللعبة مع التحقق من وجود البيانات
-function startGame() {
-    if (!puzzlesData) {
-        alert('⏳ لم يتم تحميل البيانات بعد. يرجى الانتظار.');
-        return;
-    }
-    // ... باقي الكود
-}
-
-// ... باقي الملف// ================== دوال التنقل ==================
+// ================== دوال التنقل بين الشاشات ==================
 function showScreen(screenId) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById(screenId).classList.add('active');
@@ -204,12 +188,15 @@ function showLevelScreen() {
     showScreen('level-screen');
 }
 
-// ================== بدء اللعبة ==================
+// ================== بدء اللعبة (دالة واحدة فقط) ==================
 function startGame() {
+    // التحقق من تحميل البيانات
     if (!puzzlesData) {
-        alert('⏳ البيانات لم يتم تحميلها بعد.');
+        alert('⏳ لم يتم تحميل البيانات بعد. يرجى الانتظار.');
         return;
     }
+
+    // التأكد من وجود الفئة والمستوى
     if (!selectedCategory) selectedCategory = 'numbers';
     if (!selectedLevel) selectedLevel = 1;
 
@@ -219,6 +206,7 @@ function startGame() {
         return;
     }
 
+    // تصفية الأسئلة حسب المستوى وأخذ أول 10
     const filtered = allQuestions.filter(q => q.difficulty === selectedLevel);
     currentQuestions = filtered.slice(0, maxQuestions);
 
@@ -227,6 +215,7 @@ function startGame() {
         return;
     }
 
+    // إعادة تعيين حالة اللعبة
     currentQuestionIndex = 0;
     score = 0;
     hearts = 3;
@@ -266,7 +255,7 @@ function loadQuestion() {
 
     const q = currentQuestions[currentQuestionIndex];
     document.getElementById('riddle-text').innerText = q.riddle;
-    document.getElementById('question-counter').innerText = `السؤال ${currentQuestionIndex+1} / ${currentQuestions.length}`;
+    document.getElementById('question-counter').innerText = `السؤال ${currentQuestionIndex + 1} / ${currentQuestions.length}`;
 
     const choicesDiv = document.getElementById('choices-container');
     choicesDiv.innerHTML = '';
@@ -300,10 +289,12 @@ function loadQuestion() {
 function handleWrongAnswer() {
     hearts--;
     updateHearts();
+
     if (hearts <= 0) {
         endGame();
         return;
     }
+
     const q = currentQuestions[currentQuestionIndex];
     document.getElementById('explanation-text').innerHTML = `❌ إجابة خاطئة!<br>${q.explanation}`;
     document.getElementById('explanation-container').style.display = 'block';
@@ -380,7 +371,6 @@ function endGameEarly() {
 // ================== إنهاء المرحلة وعرض النتائج مع حفظ النقاط ==================
 function endGame() {
     clearInterval(timerInterval);
-    // حفظ النتيجة إذا كان المستخدم مسجلاً
     if (currentUser) {
         saveScoreToFirestore();
     } else {
@@ -476,7 +466,7 @@ async function showHighScores() {
     }
 }
 
-// ================== تصدير الدوال ==================
+// ================== تصدير الدوال إلى النطاق العام (للاستخدام في onclick) ==================
 window.startChallenge = startChallenge;
 window.showCategoryScreen = showCategoryScreen;
 window.showLevelScreen = showLevelScreen;
