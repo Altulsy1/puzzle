@@ -1,0 +1,763 @@
+{
+  "meta": {
+    "title": "Riddle Bank - Arabic (MCQ 3 options)",
+    "version": "1.0",
+    "language": "ar",
+    "categories": ["numbers", "old", "history", "technology"],
+    "difficulties": {
+      "1": "سهل",
+      "2": "متوسط",
+      "3": "صعب",
+      "4": "عبقري"
+    },
+    "rules": {
+      "choicesCount": 3,
+      "answerIndexMeaning": "0=A, 1=B, 2=C"
+    }
+  },
+  "bank": {
+    "numbers": [
+      {
+        "id": "NUM-001",
+        "category": "numbers",
+        "difficulty": 1,
+        "riddle": "عدد إذا جمعته مع نفسه كان الناتج 12. ما هو؟",
+        "choices": ["5", "6", "7"],
+        "answerIndex": 1,
+        "explanation": "6 + 6 = 12"
+      },
+      {
+        "id": "NUM-002",
+        "category": "numbers",
+        "difficulty": 1,
+        "riddle": "عدد إذا ضربته في 3 كان الناتج 15. ما هو؟",
+        "choices": ["4", "5", "6"],
+        "answerIndex": 1,
+        "explanation": "5 × 3 = 15"
+      },
+      {
+        "id": "NUM-003",
+        "category": "numbers",
+        "difficulty": 1,
+        "riddle": "أي الأعداد التالية زوجي؟",
+        "choices": ["9", "12", "15"],
+        "answerIndex": 1,
+        "explanation": "12 يقبل القسمة على 2 دون باقي."
+      },
+      {
+        "id": "NUM-004",
+        "category": "numbers",
+        "difficulty": 1,
+        "riddle": "إذا كان 10 ÷ 2 = ؟",
+        "choices": ["4", "5", "6"],
+        "answerIndex": 1,
+        "explanation": "10 ÷ 2 = 5"
+      },
+      {
+        "id": "NUM-005",
+        "category": "numbers",
+        "difficulty": 1,
+        "riddle": "ما العدد الذي إذا طرحنا منه 1 يصبح 9؟",
+        "choices": ["8", "10", "11"],
+        "answerIndex": 1,
+        "explanation": "10 - 1 = 9"
+      },
+
+      {
+        "id": "NUM-006",
+        "category": "numbers",
+        "difficulty": 2,
+        "riddle": "ناتج 7 + 8 - 5 يساوي؟",
+        "choices": ["9", "10", "11"],
+        "answerIndex": 2,
+        "explanation": "7 + 8 = 15، ثم 15 - 5 = 10 (انتبه: الخيار الصحيح هو 10)."
+      },
+      {
+        "id": "NUM-007",
+        "category": "numbers",
+        "difficulty": 2,
+        "riddle": "أي كسر يساوي 0.5؟",
+        "choices": ["1/3", "1/2", "2/3"],
+        "answerIndex": 1,
+        "explanation": "1/2 = 0.5"
+      },
+      {
+        "id": "NUM-008",
+        "category": "numbers",
+        "difficulty": 2,
+        "riddle": "أكبر عدد بين الخيارات؟",
+        "choices": ["98", "109", "101"],
+        "answerIndex": 1,
+        "explanation": "109 هو الأكبر."
+      },
+      {
+        "id": "NUM-009",
+        "category": "numbers",
+        "difficulty": 2,
+        "riddle": "إذا كان نصف العدد يساوي 14، فالعدد هو؟",
+        "choices": ["24", "28", "30"],
+        "answerIndex": 1,
+        "explanation": "14 × 2 = 28"
+      },
+      {
+        "id": "NUM-010",
+        "category": "numbers",
+        "difficulty": 2,
+        "riddle": "ما العدد التالي في النمط: 2، 4، 6، 8، ؟",
+        "choices": ["9", "10", "12"],
+        "answerIndex": 1,
+        "explanation": "النمط يزيد 2 كل مرة."
+      },
+
+      {
+        "id": "NUM-011",
+        "category": "numbers",
+        "difficulty": 3,
+        "riddle": "لديك 3 أعداد مجموعها 30 وجميعها أعداد زوجية. أي مجموعة صحيحة؟",
+        "choices": ["8، 10، 12", "9، 10، 11", "6، 10، 13"],
+        "answerIndex": 0,
+        "explanation": "8+10+12=30 وكلها زوجية."
+      },
+      {
+        "id": "NUM-012",
+        "category": "numbers",
+        "difficulty": 3,
+        "riddle": "إذا كان 4x = 28، فكم x؟",
+        "choices": ["5", "6", "7"],
+        "answerIndex": 2,
+        "explanation": "28 ÷ 4 = 7"
+      },
+      {
+        "id": "NUM-013",
+        "category": "numbers",
+        "difficulty": 3,
+        "riddle": "أي عدد أولي بين الخيارات؟",
+        "choices": ["21", "23", "25"],
+        "answerIndex": 1,
+        "explanation": "23 لا يقبل القسمة إلا على 1 و23."
+      },
+      {
+        "id": "NUM-014",
+        "category": "numbers",
+        "difficulty": 3,
+        "riddle": "ناتج (3 × 5) + (12 ÷ 3) يساوي؟",
+        "choices": ["17", "19", "21"],
+        "answerIndex": 1,
+        "explanation": "3×5=15 و12÷3=4، المجموع 19."
+      },
+      {
+        "id": "NUM-015",
+        "category": "numbers",
+        "difficulty": 3,
+        "riddle": "أي خيار يساوي 2^5؟",
+        "choices": ["16", "32", "64"],
+        "answerIndex": 1,
+        "explanation": "2^5 = 32"
+      },
+
+      {
+        "id": "NUM-016",
+        "category": "numbers",
+        "difficulty": 4,
+        "riddle": "أنا عدد مكوّن من رقمين. مجموع رقميّ يساوي 9 والعدد قابل للقسمة على 9. ما هو؟",
+        "choices": ["18", "27", "36"],
+        "answerIndex": 1,
+        "explanation": "27 مجموع رقميه 2+7=9 وهو يقبل القسمة على 9."
+      },
+      {
+        "id": "NUM-017",
+        "category": "numbers",
+        "difficulty": 4,
+        "riddle": "أي رقم يجعل المعادلة صحيحة: 5 + ? = 3 × 4",
+        "choices": ["6", "7", "8"],
+        "answerIndex": 1,
+        "explanation": "3×4=12، إذن ?=12-5=7."
+      },
+      {
+        "id": "NUM-018",
+        "category": "numbers",
+        "difficulty": 4,
+        "riddle": "إذا كان 1/3 من عدد يساوي 11، فالعدد هو؟",
+        "choices": ["22", "33", "44"],
+        "answerIndex": 1,
+        "explanation": "11 × 3 = 33"
+      },
+      {
+        "id": "NUM-019",
+        "category": "numbers",
+        "difficulty": 4,
+        "riddle": "نمط: 1، 1، 2، 3، 5، ؟",
+        "choices": ["7", "8", "9"],
+        "answerIndex": 1,
+        "explanation": "متتالية فيبوناتشي: 3+5=8."
+      },
+      {
+        "id": "NUM-020",
+        "category": "numbers",
+        "difficulty": 4,
+        "riddle": "أي خيار يساوي الجذر التربيعي لـ 169؟",
+        "choices": ["11", "12", "13"],
+        "answerIndex": 2,
+        "explanation": "13×13=169."
+      }
+    ],
+
+    "old": [
+      {
+        "id": "OLD-001",
+        "category": "old",
+        "difficulty": 1,
+        "riddle": "شيء إذا شرب منه الناس نقص، وإذا شرب منه البحر زاد. ما هو؟",
+        "choices": ["الماء", "النار", "الملح"],
+        "answerIndex": 1,
+        "explanation": "النار تخمد بالماء (تنقص)، وتزيد بالحطب/الوقود (تغذّيها)."
+      },
+      {
+        "id": "OLD-002",
+        "category": "old",
+        "difficulty": 1,
+        "riddle": "له أسنان ولا يعض. ما هو؟",
+        "choices": ["المشط", "السحاب", "المفتاح"],
+        "answerIndex": 0,
+        "explanation": "المشط له أسنان للتسريح."
+      },
+      {
+        "id": "OLD-003",
+        "category": "old",
+        "difficulty": 1,
+        "riddle": "يمشي بلا رجلين ويدخل الأذن. ما هو؟",
+        "choices": ["الضوء", "الصوت", "الظل"],
+        "answerIndex": 1,
+        "explanation": "الصوت ينتقل ويدخل الأذن."
+      },
+      {
+        "id": "OLD-004",
+        "category": "old",
+        "difficulty": 1,
+        "riddle": "شيء كلما أخذت منه كبر. ما هو؟",
+        "choices": ["الحفرة", "الخبز", "الظلال"],
+        "answerIndex": 0,
+        "explanation": "الحفرة تكبر كلما حفرت/أخذت منها."
+      },
+      {
+        "id": "OLD-005",
+        "category": "old",
+        "difficulty": 1,
+        "riddle": "بيت بلا أبواب ولا نوافذ. ما هو؟",
+        "choices": ["البيضة", "الكتاب", "الخيمة"],
+        "answerIndex": 0,
+        "explanation": "البيضة تشبه بيتًا مغلقًا."
+      },
+
+      {
+        "id": "OLD-006",
+        "category": "old",
+        "difficulty": 2,
+        "riddle": "أخضر في الأرض، أسود في السوق، أحمر في البيت. ما هو؟",
+        "choices": ["الزيتون", "الشاي", "البطيخ"],
+        "answerIndex": 1,
+        "explanation": "الشاي أخضر كنبات، أسود عند البيع، أحمر عند التحضير."
+      },
+      {
+        "id": "OLD-007",
+        "category": "old",
+        "difficulty": 2,
+        "riddle": "أبوه في البحر وأمه في البر، فمَن هو؟",
+        "choices": ["الملح", "السمك", "اللؤلؤ"],
+        "answerIndex": 0,
+        "explanation": "الملح مصدره البحر ويُستخدم على البر."
+      },
+      {
+        "id": "OLD-008",
+        "category": "old",
+        "difficulty": 2,
+        "riddle": "له رأس ولا عين له. ما هو؟",
+        "choices": ["المسمار", "الإبرة", "الحبل"],
+        "answerIndex": 0,
+        "explanation": "المسمار له رأس."
+      },
+      {
+        "id": "OLD-009",
+        "category": "old",
+        "difficulty": 2,
+        "riddle": "ما هو الذي ينام ولا يستيقظ؟",
+        "choices": ["الميت", "الظل", "الريح"],
+        "answerIndex": 0,
+        "explanation": "الميت لا يستيقظ."
+      },
+      {
+        "id": "OLD-010",
+        "category": "old",
+        "difficulty": 2,
+        "riddle": "شيء تراه ولا تستطيع لمسه، وإذا لمسته اختفى. ما هو؟",
+        "choices": ["الدخان", "الضوء", "الظل"],
+        "answerIndex": 2,
+        "explanation": "الظل لا يُمسّ، ومحاولة الإمساك به بلا معنى."
+      },
+
+      {
+        "id": "OLD-011",
+        "category": "old",
+        "difficulty": 3,
+        "riddle": "كلما زاد نقص. ما هو؟",
+        "choices": ["العمر", "المال", "الوقت"],
+        "answerIndex": 2,
+        "explanation": "كلما زاد الوقت الذي يمرّ قلّ الوقت المتبقي."
+      },
+      {
+        "id": "OLD-012",
+        "category": "old",
+        "difficulty": 3,
+        "riddle": "شيء يُكسر ولا يُمسّ. ما هو؟",
+        "choices": ["الزجاج", "الصمت", "الخبز"],
+        "answerIndex": 1,
+        "explanation": "يمكن كسر الصمت بالكلام."
+      },
+      {
+        "id": "OLD-013",
+        "category": "old",
+        "difficulty": 3,
+        "riddle": "ما هو الذي في وسط الماء ولا يبتل؟",
+        "choices": ["حرف الألف", "حرف الواو", "حرف الميم"],
+        "answerIndex": 2,
+        "explanation": "حرف الميم هو وسط كلمة (ماء)."
+      },
+      {
+        "id": "OLD-014",
+        "category": "old",
+        "difficulty": 3,
+        "riddle": "له رقبة بلا رأس. ما هو؟",
+        "choices": ["الزجاجة", "القلم", "الساعة"],
+        "answerIndex": 0,
+        "explanation": "للزجاجة عنق."
+      },
+      {
+        "id": "OLD-015",
+        "category": "old",
+        "difficulty": 3,
+        "riddle": "ما هو الشيء الذي يحمل طعامه فوق رأسه؟",
+        "choices": ["النخلة", "السلحفاة", "الطائر"],
+        "answerIndex": 0,
+        "explanation": "ثمار النخلة في الأعلى."
+      },
+
+      {
+        "id": "OLD-016",
+        "category": "old",
+        "difficulty": 4,
+        "riddle": "له عين واحدة لكنه لا يرى. ما هو؟",
+        "choices": ["الإبرة", "المفتاح", "المرآة"],
+        "answerIndex": 0,
+        "explanation": "عين الإبرة ثقبها."
+      },
+      {
+        "id": "OLD-017",
+        "category": "old",
+        "difficulty": 4,
+        "riddle": "شيء إذا ذكرته كسرته. ما هو؟",
+        "choices": ["الوعد", "السر", "الزجاج"],
+        "answerIndex": 1,
+        "explanation": "ذكر السر يفضحه فيُكسر."
+      },
+      {
+        "id": "OLD-018",
+        "category": "old",
+        "difficulty": 4,
+        "riddle": "يولد كبيرًا ثم يصغر كلما طال عمره. ما هو؟",
+        "choices": ["القمر", "الشمعة", "الجبل"],
+        "answerIndex": 1,
+        "explanation": "الشمعة تبدأ كاملة ثم تنقص بالاحتراق."
+      },
+      {
+        "id": "OLD-019",
+        "category": "old",
+        "difficulty": 4,
+        "riddle": "شيء إذا وضعته في الثلاجة لا يبرد. ما هو؟",
+        "choices": ["الفلفل الحار", "الماء", "الثلج"],
+        "answerIndex": 0,
+        "explanation": "الحرارة هنا مجازية: (حار) لا يصبح بارد الطبع."
+      },
+      {
+        "id": "OLD-020",
+        "category": "old",
+        "difficulty": 4,
+        "riddle": "ما هو الذي يكتب ولا يقرأ؟",
+        "choices": ["القلم", "الكتاب", "اللوح"],
+        "answerIndex": 0,
+        "explanation": "القلم يكتب لكنه لا يقرأ."
+      }
+    ],
+
+    "history": [
+      {
+        "id": "HIS-001",
+        "category": "history",
+        "difficulty": 1,
+        "riddle": "في أي قارة تقع مصر؟",
+        "choices": ["أفريقيا", "أوروبا", "أمريكا الجنوبية"],
+        "answerIndex": 0,
+        "explanation": "مصر دولة أفريقية (مع امتداد آسيوي في سيناء)."
+      },
+      {
+        "id": "HIS-002",
+        "category": "history",
+        "difficulty": 1,
+        "riddle": "أي حضارة اشتهرت ببناء الأهرامات في الجيزة؟",
+        "choices": ["الرومانية", "الفرعونية", "الإغريقية"],
+        "answerIndex": 1,
+        "explanation": "الأهرامات من الحضارة المصرية القديمة."
+      },
+      {
+        "id": "HIS-003",
+        "category": "history",
+        "difficulty": 1,
+        "riddle": "مدينة القدس مرتبطة تاريخيًا بأي منطقة؟",
+        "choices": ["بلاد الشام", "شبه الجزيرة الإيبيرية", "شبه الجزيرة الاسكندنافية"],
+        "answerIndex": 0,
+        "explanation": "القدس في بلاد الشام/فلسطين التاريخية."
+      },
+      {
+        "id": "HIS-004",
+        "category": "history",
+        "difficulty": 1,
+        "riddle": "أي بحر يفصل بين أفريقيا وأوروبا عند مضيق جبل طارق؟",
+        "choices": ["البحر الأسود", "البحر المتوسط", "بحر العرب"],
+        "answerIndex": 1,
+        "explanation": "مضيق جبل طارق يصل الأطلسي بالمتوسط."
+      },
+      {
+        "id": "HIS-005",
+        "category": "history",
+        "difficulty": 1,
+        "riddle": "ما اسم الطريق التجاري الشهير الذي ربط الشرق بالغرب قديمًا؟",
+        "choices": ["طريق الحرير", "طريق التوابل", "طريق الكهرمان"],
+        "answerIndex": 0,
+        "explanation": "طريق الحرير أشهر شبكة طرق تاريخية."
+      },
+
+      {
+        "id": "HIS-006",
+        "category": "history",
+        "difficulty": 2,
+        "riddle": "أي نهر ارتبط بقيام الحضارة المصرية القديمة؟",
+        "choices": ["النيل", "الأمازون", "الدانوب"],
+        "answerIndex": 0,
+        "explanation": "النيل هو شريان مصر التاريخي."
+      },
+      {
+        "id": "HIS-007",
+        "category": "history",
+        "difficulty": 2,
+        "riddle": "أي إمبراطورية اتخذت روما عاصمة لها؟",
+        "choices": ["البيزنطية", "الرومانية", "العباسية"],
+        "answerIndex": 1,
+        "explanation": "روما كانت عاصمة الإمبراطورية الرومانية."
+      },
+      {
+        "id": "HIS-008",
+        "category": "history",
+        "difficulty": 2,
+        "riddle": "أي مدينة كانت عاصمة للدولة العباسية في أوجها؟",
+        "choices": ["دمشق", "بغداد", "القاهرة"],
+        "answerIndex": 1,
+        "explanation": "العاصمة العباسية كانت بغداد."
+      },
+      {
+        "id": "HIS-009",
+        "category": "history",
+        "difficulty": 2,
+        "riddle": "ما الاسم الذي يُطلق على العصور التي سبقت اختراع الكتابة؟",
+        "choices": ["العصور القديمة", "عصور ما قبل التاريخ", "العصور الوسطى"],
+        "answerIndex": 1,
+        "explanation": "ما قبل التاريخ: قبل التدوين."
+      },
+      {
+        "id": "HIS-010",
+        "category": "history",
+        "difficulty": 2,
+        "riddle": "أي حضارة اشتهرت بالخط المسماري؟",
+        "choices": ["السومرية", "الفرعونية", "المايا"],
+        "answerIndex": 0,
+        "explanation": "السومريون استخدموا المسمارية مبكرًا."
+      },
+
+      {
+        "id": "HIS-011",
+        "category": "history",
+        "difficulty": 3,
+        "riddle": "أي حدث يُعد بداية الحرب العالمية الثانية في أوروبا (شائعًا في الكتب المدرسية)؟",
+        "choices": ["غزو بولندا", "سقوط القسطنطينية", "معركة واترلو"],
+        "answerIndex": 0,
+        "explanation": "غزو بولندا عام 1939 يُعد الشرارة في أوروبا."
+      },
+      {
+        "id": "HIS-012",
+        "category": "history",
+        "difficulty": 3,
+        "riddle": "أي مدينة ارتبط اسمها بـ(بيت الحكمة) كمركز علمي؟",
+        "choices": ["قرطبة", "بغداد", "القيروان"],
+        "answerIndex": 1,
+        "explanation": "بيت الحكمة اشتهر في بغداد."
+      },
+      {
+        "id": "HIS-013",
+        "category": "history",
+        "difficulty": 3,
+        "riddle": "أي إمبراطوريات عُرفت ببناء سور عظيم مشهور؟",
+        "choices": ["الصينية", "الرومانية", "العثمانية"],
+        "answerIndex": 0,
+        "explanation": "سور الصين العظيم أشهر مثال."
+      },
+      {
+        "id": "HIS-014",
+        "category": "history",
+        "difficulty": 3,
+        "riddle": "أي حضارة قديمة قامت في بلاد الرافدين بين دجلة والفرات؟",
+        "choices": ["الإنكا", "بلاد ما بين النهرين", "الفينيقية"],
+        "answerIndex": 1,
+        "explanation": "بلاد ما بين النهرين هي منطقة الرافدين."
+      },
+      {
+        "id": "HIS-015",
+        "category": "history",
+        "difficulty": 3,
+        "riddle": "أي مدينة يُطلق عليها تاريخيًا (عروس البحر المتوسط) في مصر؟",
+        "choices": ["الإسكندرية", "أسوان", "المنصورة"],
+        "answerIndex": 0,
+        "explanation": "لقب شائع للإسكندرية."
+      },
+
+      {
+        "id": "HIS-016",
+        "category": "history",
+        "difficulty": 4,
+        "riddle": "أي مصطلح يصف فترة ازدهار العلوم والترجمة في الحضارة الإسلامية (شائعًا)؟",
+        "choices": ["العصر الذهبي", "العصر الحجري", "العصر المظلم"],
+        "answerIndex": 0,
+        "explanation": "يُشار إليها غالبًا بالعصر الذهبي."
+      },
+      {
+        "id": "HIS-017",
+        "category": "history",
+        "difficulty": 4,
+        "riddle": "أي طريق بحري قصّر الرحلة بين أوروبا وآسيا بعد افتتاحه في القرن التاسع عشر؟",
+        "choices": ["قناة السويس", "قناة بنما", "نهر الراين"],
+        "answerIndex": 0,
+        "explanation": "قناة السويس اختصرت المسافة بين المتوسط والبحر الأحمر."
+      },
+      {
+        "id": "HIS-018",
+        "category": "history",
+        "difficulty": 4,
+        "riddle": "أي مدينة تُعد من أقدم المدن المأهولة في العالم بحسب كثير من المصادر التاريخية؟",
+        "choices": ["أريحا", "دبي", "كانبيرا"],
+        "answerIndex": 0,
+        "explanation": "أريحا تُذكر كثيرًا ضمن الأقدم."
+      },
+      {
+        "id": "HIS-019",
+        "category": "history",
+        "difficulty": 4,
+        "riddle": "أي مصطلح يصف انتقال أوروبا إلى مرحلة فكرية وفنية جديدة (شائعًا) بعد العصور الوسطى؟",
+        "choices": ["النهضة", "الفتوحات", "الاستعمار"],
+        "answerIndex": 0,
+        "explanation": "عصر النهضة."
+      },
+      {
+        "id": "HIS-020",
+        "category": "history",
+        "difficulty": 4,
+        "riddle": "أي حضارة أمريكية قديمة اشتهرت ببناء مدن حجرية في جبال الأنديز؟",
+        "choices": ["الإنكا", "الآشورية", "الحثّية"],
+        "answerIndex": 0,
+        "explanation": "حضارة الإنكا في الأنديز."
+      }
+    ],
+
+    "technology": [
+      {
+        "id": "TEC-001",
+        "category": "technology",
+        "difficulty": 1,
+        "riddle": "أي جهاز نستخدمه عادةً لإدخال النص إلى الكمبيوتر؟",
+        "choices": ["الفأرة", "لوحة المفاتيح", "الشاشة"],
+        "answerIndex": 1,
+        "explanation": "لوحة المفاتيح لإدخال النص."
+      },
+      {
+        "id": "TEC-002",
+        "category": "technology",
+        "difficulty": 1,
+        "riddle": "أي من التالي يُعد متصفح إنترنت؟",
+        "choices": ["Chrome", "Windows", "CPU"],
+        "answerIndex": 0,
+        "explanation": "Chrome متصفح."
+      },
+      {
+        "id": "TEC-003",
+        "category": "technology",
+        "difficulty": 1,
+        "riddle": "ما وظيفة كلمة المرور؟",
+        "choices": ["حماية الحساب", "زيادة سرعة الإنترنت", "شحن الهاتف"],
+        "answerIndex": 0,
+        "explanation": "كلمة المرور لحماية الوصول."
+      },
+      {
+        "id": "TEC-004",
+        "category": "technology",
+        "difficulty": 1,
+        "riddle": "أي مما يلي يُستخدم لتخزين الملفات؟",
+        "choices": ["RAM", "SSD", "GPU"],
+        "answerIndex": 1,
+        "explanation": "SSD للتخزين الدائم."
+      },
+      {
+        "id": "TEC-005",
+        "category": "technology",
+        "difficulty": 1,
+        "riddle": "ما المقصود بـ Wi-Fi؟",
+        "choices": ["اتصال لاسلكي بالشبكة", "نوع من الكاميرات", "برنامج مضاد فيروسات"],
+        "answerIndex": 0,
+        "explanation": "Wi-Fi اتصال لاسلكي."
+      },
+
+      {
+        "id": "TEC-006",
+        "category": "technology",
+        "difficulty": 2,
+        "riddle": "أي من التالي يُعد نظام تشغيل؟",
+        "choices": ["Android", "YouTube", "HDMI"],
+        "answerIndex": 0,
+        "explanation": "Android نظام تشغيل."
+      },
+      {
+        "id": "TEC-007",
+        "category": "technology",
+        "difficulty": 2,
+        "riddle": "أي جزء يُسمّى (دماغ الكمبيوتر) غالبًا؟",
+        "choices": ["المعالج CPU", "الشاشة", "الماوس"],
+        "answerIndex": 0,
+        "explanation": "CPU ينفّذ التعليمات."
+      },
+      {
+        "id": "TEC-008",
+        "category": "technology",
+        "difficulty": 2,
+        "riddle": "أي بروتوكول شائع لتصفح مواقع الويب؟",
+        "choices": ["HTTP", "MP3", "JPEG"],
+        "answerIndex": 0,
+        "explanation": "HTTP/HTTPS للويب."
+      },
+      {
+        "id": "TEC-009",
+        "category": "technology",
+        "difficulty": 2,
+        "riddle": "أي مما يلي يُستخدم لعرض الصور بصيغة شائعة؟",
+        "choices": ["PNG", "TXT", "EXE"],
+        "answerIndex": 0,
+        "explanation": "PNG صيغة صور."
+      },
+      {
+        "id": "TEC-010",
+        "category": "technology",
+        "difficulty": 2,
+        "riddle": "ما الهدف الأساسي من النسخ الاحتياطي؟",
+        "choices": ["استرجاع البيانات عند فقدها", "زيادة دقة الشاشة", "تسريع المعالج"],
+        "answerIndex": 0,
+        "explanation": "النسخ الاحتياطي للحماية من الفقد."
+      },
+
+      {
+        "id": "TEC-011",
+        "category": "technology",
+        "difficulty": 3,
+        "riddle": "أي مصطلح يصف برنامجًا خبيثًا يشفّر ملفاتك ويطلب فدية؟",
+        "choices": ["Ransomware", "Firewall", "Cache"],
+        "answerIndex": 0,
+        "explanation": "Ransomware = برمجية فدية."
+      },
+      {
+        "id": "TEC-012",
+        "category": "technology",
+        "difficulty": 3,
+        "riddle": "أي مما يلي يُعد لغة برمجة؟",
+        "choices": ["Python", "Bluetooth", "SSD"],
+        "answerIndex": 0,
+        "explanation": "Python لغة برمجة."
+      },
+      {
+        "id": "TEC-013",
+        "category": "technology",
+        "difficulty": 3,
+        "riddle": "أي طبقة/خدمة ترجّح أنها مسؤولة عن تحويل اسم موقع إلى عنوان IP؟",
+        "choices": ["DNS", "USB", "HTML"],
+        "answerIndex": 0,
+        "explanation": "DNS يحوّل الاسم إلى IP."
+      },
+      {
+        "id": "TEC-014",
+        "category": "technology",
+        "difficulty": 3,
+        "riddle": "ما الفرق الأقرب بين RAM و SSD؟",
+        "choices": ["RAM ذاكرة مؤقتة، SSD تخزين دائم", "RAM تخزين دائم، SSD مؤقت", "لا فرق بينهما"],
+        "answerIndex": 0,
+        "explanation": "RAM متطايرة، SSD غير متطاير."
+      },
+      {
+        "id": "TEC-015",
+        "category": "technology",
+        "difficulty": 3,
+        "riddle": "أي مصطلح يصف التحقق بخطوتين لحماية الحساب؟",
+        "choices": ["2FA", "VPN", "LAN"],
+        "answerIndex": 0,
+        "explanation": "2FA = المصادقة الثنائية."
+      },
+
+      {
+        "id": "TEC-016",
+        "category": "technology",
+        "difficulty": 4,
+        "riddle": "أي مفهوم يصف تشغيل برامج داخل بيئة معزولة عن النظام الأساسي؟",
+        "choices": ["Virtualization", "Defragmentation", "Overclocking"],
+        "answerIndex": 0,
+        "explanation": "Virtualization = افتراضية/عزل عبر آلة افتراضية."
+      },
+      {
+        "id": "TEC-017",
+        "category": "technology",
+        "difficulty": 4,
+        "riddle": "أي تقنية تساعد على تأمين الاتصال عبر تشفيره عند تصفح الويب؟",
+        "choices": ["HTTPS", "HTML", "RSS"],
+        "answerIndex": 0,
+        "explanation": "HTTPS = HTTP مع تشفير TLS."
+      },
+      {
+        "id": "TEC-018",
+        "category": "technology",
+        "difficulty": 4,
+        "riddle": "أي خيار يصف (الذكاء الاصطناعي التوليدي) بشكل أدق؟",
+        "choices": ["ينتج نصوص/صور جديدة بناءً على بيانات تعلم منها", "يزيد سرعة المعالج", "يصلح أعطال الشاشة"],
+        "answerIndex": 0,
+        "explanation": "التوليدي يُنشئ محتوى جديدًا."
+      },
+      {
+        "id": "TEC-019",
+        "category": "technology",
+        "difficulty": 4,
+        "riddle": "أي مصطلح يصف تخزين صفحات/بيانات مؤقتًا لتسريع فتحها لاحقًا؟",
+        "choices": ["Cache", "Kernel", "API"],
+        "answerIndex": 0,
+        "explanation": "Cache تخزين مؤقت للتسريع."
+      },
+      {
+        "id": "TEC-020",
+        "category": "technology",
+        "difficulty": 4,
+        "riddle": "أي جزء مسؤول غالبًا عن معالجة الرسوميات في الألعاب؟",
+        "choices": ["GPU", "Router", "Compiler"],
+        "answerIndex": 0,
+        "explanation": "GPU لمعالجة الرسوميات."
+      }
+    ]
+  }
+}
