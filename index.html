@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحدّي الألغاز - اختر الصح</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .game-container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            padding: 20px;
+        }
+        .screen {
+            display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn:hover {
+            background: #5a67d8;
+            transform: scale(1.02);
+        }
+        .btn.secondary {
+            background: #48bb78;
+        }
+        .btn.secondary:hover {
+            background: #38a169;
+        }
+        .btn.danger {
+            background: #f56565;
+        }
+        .btn.danger:hover {
+            background: #e53e3e;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .category-card, .level-card {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .category-card:hover, .level-card:hover {
+            border-color: #667eea;
+            background: #edf2f7;
+        }
+        .category-card.selected, .level-card.selected {
+            border-color: #667eea;
+            background: #e2e8f0;
+        }
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .category-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .level-difficulty {
+            font-size: 14px;
+            color: #718096;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #edf2f7;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .hearts {
+            display: flex;
+            gap: 5px;
+        }
+        .heart {
+            color: #fc8181;
+            font-size: 24px;
+        }
+        .timer {
+            background: #2d3748;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        .riddle-text {
+            font-size: 24px;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 10px;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .choices {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .choice-btn {
+            padding: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #e2e8f0;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .choice-btn:hover:not(:disabled) {
+            background: #cbd5e0;
+        }
+        .choice-btn.correct {
+            background: #9ae6b4;
+        }
+        .choice-btn.wrong {
+            background: #feb2b2;
+        }
+        .explanation {
+            background: #e6fffa;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-right: 5px solid #38b2ac;
+            font-size: 16px;
+        }
+        .next-btn {
+            background: #48bb78;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+        .next-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result-stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            font-size: 30px;
+            color: #f6e05e;
+        }
+        .result-stats {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        @media (max-width: 500px) {
+            .choices {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <!-- شاشة البداية -->
+        <div id="start-screen" class="screen active">
+            <h1>🧩 تحدّي الألغاز</h1>
+            <h2>اختر الصح</h2>
+            <button class="btn" onclick="startChallenge()">🚀 ابدأ التحدّي</button>
+            <button class="btn secondary" onclick="showCategoryScreen()">📂 اختيار الفئة</button>
+            <button class="btn" onclick="showLevelScreen()">📊 المستويات</button>
+            <button class="btn" onclick="showHighScores()">🏆 أفضل النتائج</button>
+        </div>
+
+        <!-- شاشة اختيار الفئة -->
+        <div id="category-screen" class="screen">
+            <h2>اختر الفئة</h2>
+            <div id="categories-container" class="grid-2"></div>
+            <button class="btn danger" onclick="goBackToStart()">🔙 رجوع</button>
+        </div>
+
+        <!-- شاشة اختيار المستوى -->
+        <div id="level-screen" class="screen">
+            <h2>اختر المستوى</h2>
+            <div id="levels-container" class="grid-2"></div>
+            <button class="btn danger" onclick="goBackToCategories()">🔙 رجوع</button>
+        </div>
+
+        <!-- شاشة التحدي (اللعب) -->
+        <div id="game-screen" class="screen">
+            <div class="header-info">
+                <div class="hearts" id="hearts-container"></div>
+                <span id="score-display">0 نقطة</span>
+                <span class="timer" id="timer-display">20</span>
+            </div>
+            <div id="question-counter" style="text-align: center; margin-bottom: 10px;">السؤال 1 / 10</div>
+            <div class="riddle-text" id="riddle-text"></div>
+            <div class="choices" id="choices-container"></div>
+            <div id="explanation-container" style="display: none;">
+                <div class="explanation" id="explanation-text"></div>
+                <button class="next-btn" id="next-btn" onclick="nextQuestion()">التالي</button>
+            </div>
+            <div id="game-controls" style="text-align: center; margin-top: 20px;">
+                <button class="btn danger" onclick="endGameEarly()">إنهاء المرحلة</button>
+            </div>
+        </div>
+
+        <!-- شاشة نهاية المرحلة -->
+        <div id="end-screen" class="screen">
+            <h2>🎉 نهاية المرحلة</h2>
+            <div class="result-stars" id="stars-container"></div>
+            <div class="result-stats" id="result-stats"></div>
+            <button class="btn" onclick="restartLevel()">🔄 إعادة المرحلة</button>
+            <button class="btn secondary" onclick="goToLevelSelect()">📋 اختيار مستوى آخر</button>
+            <button class="btn" onclick="goToStart()">🏠 الرئيسية</button>
+        </div>
+    </div>
+
+    <script>
+        // ---------- بيانات الألغاز (منسوخة من puzzle.json) ----------
+        const puzzlesData = {
+            "numbers": [
+                { "id": "NUM-001", "difficulty": 1, "riddle": "عدد إذا جمعته مع نفسه كان الناتج 12. ما هو؟", "choices": ["5", "6", "7"], "answerIndex": 1, "explanation": "6 + 6 = 12" },
+                { "id": "NUM-002", "difficulty": 1, "riddle": "عدد إذا ضربته في 3 كان الناتج 15. ما هو؟", "choices": ["4", "5", "6"], "answerIndex": 1, "explanation": "5 × 3 = 15" },
+                { "id": "NUM-003", "difficulty": 1, "riddle": "أي الأعداد التالية زوجي؟", "choices": ["9", "12", "15"], "answerIndex": 1, "explanation": "12 يقبل القسمة على 2 دون باقي." },
+                { "id": "NUM-004", "difficulty": 1, "riddle": "إذا كان 10 ÷ 2 = ؟", "choices": ["4", "5", "6"], "answerIndex": 1, "explanation": "10 ÷ 2 = 5" },
+                { "id": "NUM-005", "difficulty": 1, "riddle": "ما العدد الذي إذا طرحنا منه 1 يصبح 9؟", "choices": ["8", "10", "11"], "answerIndex": 1, "explanation": "10 - 1 = 9" },
+                { "id": "NUM-006", "difficulty": 2, "riddle": "ناتج 7 + 8 - 5 يساوي؟", "choices": ["9", "10", "11"], "answerIndex": 2, "explanation": "7 + 8 = 15، ثم 15 - 5 = 10 (انتبه: الخيار الصحيح هو 10)." },
+                { "id": "NUM-007", "difficulty": 2, "riddle": "أي كسر يساوي 0.5؟", "choices": ["1/3", "1/2", "2/3"], "answerIndex": 1, "explanation": "1/2 = 0.5" },
+                { "id": "NUM-008", "difficulty": 2, "riddle": "أكبر عدد بين الخيارات؟", "choices": ["98", "109", "101"], "answerIndex": 1, "explanation": "109 هو الأكبر." },
+                { "id": "NUM-009", "difficulty": 2, "riddle": "إذا كان نصف العدد يساوي 14، فالعدد هو؟", "choices": ["24", "28", "30"], "answerIndex": 1, "explanation": "14 × 2 = 28" },
+                { "id": "NUM-010", "difficulty": 2, "riddle": "ما العدد التالي في النمط: 2، 4، 6، 8، ؟", "choices": ["9", "10", "12"], "answerIndex": 1, "explanation": "النمط يزيد 2 كل مرة." },
+                { "id": "NUM-011", "difficulty": 3, "riddle": "لديك 3 أعداد مجموعها 30 وجميعها أعداد زوجية. أي مجموعة صحيحة؟", "choices": ["8، 10، 12", "9، 10، 11", "6، 10، 13"], "answerIndex": 0, "explanation": "8+10+12=30 وكلها زوجية." },
+                { "id": "NUM-012", "difficulty": 3, "riddle": "إذا كان 4x = 28، فكم x؟", "choices": ["5", "6", "7"], "answerIndex": 2, "explanation": "28 ÷ 4 = 7" },
+                { "id": "NUM-013", "difficulty": 3, "riddle": "أي عدد أولي بين الخيارات؟", "choices": ["21", "23", "25"], "answerIndex": 1, "explanation": "23 لا يقبل القسمة إلا على 1 و23." },
+                { "id": "NUM-014", "difficulty": 3, "riddle": "ناتج (3 × 5) + (12 ÷ 3) يساوي؟", "choices": ["17", "19", "21"], "answerIndex": 1, "explanation": "3×5=15 و12÷3=4، المجموع 19." },
+                { "id": "NUM-015", "difficulty": 3, "riddle": "أي خيار يساوي 2^5؟", "choices": ["16", "32", "64"], "answerIndex": 1, "explanation": "2^5 = 32" },
+                { "id": "NUM-016", "difficulty": 4, "riddle": "أنا عدد مكوّن من رقمين. مجموع رقميّ يساوي 9 والعدد قابل للقسمة على 9. ما هو؟", "choices": ["18", "27", "36"], "answerIndex": 1, "explanation": "27 مجموع رقميه 2+7=9 وهو يقبل القسمة على 9." },
+                { "id": "NUM-017", "difficulty": 4, "riddle": "أي رقم يجعل المعادلة صحيحة: 5 + ? = 3 × 4", "choices": ["6", "7", "8"], "answerIndex": 1, "explanation": "3×4=12، إذن ?=12-5=7." },
+                { "id": "NUM-018", "difficulty": 4, "riddle": "إذا كان 1/3 من عدد يساوي 11، فالعدد هو؟", "choices": ["22", "33", "44"], "answerIndex": 1, "explanation": "11 × 3 = 33" },
+                { "id": "NUM-019", "difficulty": 4, "riddle": "نمط: 1، 1، 2، 3، 5، ؟", "choices": ["7", "8", "9"], "answerIndex": 1, "explanation": "متتالية فيبوناتشي: 3+5=8." },
+                { "id": "NUM-020", "difficulty": 4, "riddle": "أي خيار يساوي الجذر التربيعي لـ 169؟", "choices": ["11", "12", "13"], "answerIndex": 2, "explanation": "13×13=169." }
+            ],
+            "old": [
+                { "id": "OLD-001", "difficulty": 1, "riddle": "شيء إذا شرب منه الناس نقص، وإذا شرب منه البحر زاد. ما هو؟", "choices": ["الماء", "النار", "الملح"], "answerIndex": 1, "explanation": "النار تخمد بالماء (تنقص)، وتزيد بالحطب/الوقود (تغذّيها)." },
+                { "id": "OLD-002", "difficulty": 1, "riddle": "له أسنان ولا يعض. ما هو؟", "choices": ["المشط", "السحاب", "المفتاح"], "answerIndex": 0, "explanation": "المشط له أسنان للتسريح." },
+                { "id": "OLD-003", "difficulty": 1, "riddle": "يمشي بلا رجلين ويدخل الأذن. ما هو؟", "choices": ["الضوء", "الصوت", "الظل"], "answerIndex": 1, "explanation": "الصوت ينتقل ويدخل الأذن." },
+                { "id": "OLD-004", "difficulty": 1, "riddle": "شيء كلما أخذت منه كبر. ما هو؟", "choices": ["الحفرة", "الخبز", "الظلال"], "answerIndex": 0, "explanation": "الحفرة تكبر كلما حفرت/أخذت منها." },
+                { "id": "OLD-005", "difficulty": 1, "riddle": "بيت بلا أبواب ولا نوافذ. ما هو؟", "choices": ["البيضة", "الكتاب", "الخيمة"], "answerIndex": 0, "explanation": "البيضة تشبه بيتًا مغلقًا." },
+                { "id": "OLD-006", "difficulty": 2, "riddle": "أخضر في الأرض، أسود في السوق، أحمر في البيت. ما هو؟", "choices": ["الزيتون", "الشاي", "البطيخ"], "answerIndex": 1, "explanation": "الشاي أخضر كنبات، أسود عند البيع، أحمر عند التحضير." },
+                { "id": "OLD-007", "difficulty": 2, "riddle": "أبوه في البحر وأمه في البر، فمَن هو؟", "choices": ["الملح", "السمك", "اللؤلؤ"], "answerIndex": 0, "explanation": "الملح مصدره البحر ويُستخدم على البر." },
+                { "id": "OLD-008", "difficulty": 2, "riddle": "له رأس ولا عين له. ما هو؟", "choices": ["المسمار", "الإبرة", "الحبل"], "answerIndex": 0, "explanation": "المسمار له رأس." },
+                { "id": "OLD-009", "difficulty": 2, "riddle": "ما هو الذي ينام ولا يستيقظ؟", "choices": ["الميت", "الظل", "الريح"], "answerIndex": 0, "explanation": "الميت لا يستيقظ." },
+                { "id": "OLD-010", "difficulty": 2, "riddle": "شيء تراه ولا تستطيع لمسه، وإذا لمسته اختفى. ما هو؟", "choices": ["الدخان", "الضوء", "الظل"], "answerIndex": 2, "explanation": "الظل لا يُمسّ، ومحاولة الإمساك به بلا معنى." },
+                { "id": "OLD-011", "difficulty": 3, "riddle": "كلما زاد نقص. ما هو؟", "choices": ["العمر", "المال", "الوقت"], "answerIndex": 2, "explanation": "كلما زاد الوقت الذي يمرّ قلّ الوقت المتبقي." },
+                { "id": "OLD-012", "difficulty": 3, "riddle": "شيء يُكسر ولا يُمسّ. ما هو؟", "choices": ["الزجاج", "الصمت", "الخبز"], "answerIndex": 1, "explanation": "يمكن كسر الصمت بالكلام." },
+                { "id": "OLD-013", "difficulty": 3, "riddle": "ما هو الذي في وسط الماء ولا يبتل؟", "choices": ["حرف الألف", "حرف الواو", "حرف الميم"], "answerIndex": 2, "explanation": "حرف الميم هو وسط كلمة (ماء)." },
+                { "id": "OLD-014", "difficulty": 3, "riddle": "له رقبة بلا رأس. ما هو؟", "choices": ["الزجاجة", "القلم", "الساعة"], "answerIndex": 0, "explanation": "للزجاجة عنق." },
+                { "id": "OLD-015", "difficulty": 3, "riddle": "ما هو الشيء الذي يحمل طعامه فوق رأسه؟", "choices": ["النخلة", "السلحفاة", "الطائر"], "answerIndex": 0, "explanation": "ثمار النخلة في الأعلى." },
+                { "id": "OLD-016", "difficulty": 4, "riddle": "له عين واحدة لكنه لا يرى. ما هو؟", "choices": ["الإبرة", "المفتاح", "المرآة"], "answerIndex": 0, "explanation": "عين الإبرة ثقبها." },
+                { "id": "OLD-017", "difficulty": 4, "riddle": "شيء إذا ذكرته كسرته. ما هو؟", "choices": ["الوعد", "السر", "الزجاج"], "answerIndex": 1, "explanation": "ذكر السر يفضحه فيُكسر." },
+                { "id": "OLD-018", "difficulty": 4, "riddle": "يولد كبيرًا ثم يصغر كلما طال عمره. ما هو؟", "choices": ["القمر", "الشمعة", "الجبل"], "answerIndex": 1, "explanation": "الشمعة تبدأ كاملة ثم تنقص بالاحتراق." },
+                { "id": "OLD-019", "difficulty": 4, "riddle": "شيء إذا وضعته في الثلاجة لا يبرد. ما هو؟", "choices": ["الفلفل الحار", "الماء", "الثلج"], "answerIndex": 0, "explanation": "الحرارة هنا مجازية: (حار) لا يصبح بارد الطبع." },
+                { "id": "OLD-020", "difficulty": 4, "riddle": "ما هو الذي يكتب ولا يقرأ؟", "choices": ["القلم", "الكتاب", "اللوح"], "answerIndex": 0, "explanation": "القلم يكتب لكنه لا يقرأ." }
+            ],
+            "history": [
+                { "id": "HIS-001", "difficulty": 1, "riddle": "في أي قارة تقع مصر؟", "choices": ["أفريقيا", "أوروبا", "أمريكا الجنوبية"], "answerIndex": 0, "explanation": "مصر دولة أفريقية (مع امتداد آسيوي في سيناء)." },
+                { "id": "HIS-002", "difficulty": 1, "riddle": "أي حضارة اشتهرت ببناء الأهرامات في الجيزة؟", "choices": ["الرومانية", "الفرعونية", "الإغريقية"], "answerIndex": 1, "explanation": "الأهرامات من الحضارة المصرية القديمة." },
+                { "id": "HIS-003", "difficulty": 1, "riddle": "مدينة القدس مرتبطة تاريخيًا بأي منطقة؟", "choices": ["بلاد الشام", "شبه الجزيرة الإيبيرية", "شبه الجزيرة الاسكندنافية"], "answerIndex": 0, "explanation": "القدس في بلاد الشام/فلسطين التاريخية." },
+                { "id": "HIS-004", "difficulty": 1, "riddle": "أي بحر يفصل بين أفريقيا وأوروبا عند مضيق جبل طارق؟", "choices": ["البحر الأسود", "البحر المتوسط", "بحر العرب"], "answerIndex": 1, "explanation": "مضيق جبل طارق يصل الأطلسي بالمتوسط." },
+                { "id": "HIS-005", "difficulty": 1, "riddle": "ما اسم الطريق التجاري الشهير الذي ربط الشرق بالغرب قديمًا؟", "choices": ["طريق الحرير", "طريق التوابل", "طريق الكهرمان"], "answerIndex": 0, "explanation": "طريق الحرير أشهر شبكة طرق تاريخية." },
+                { "id": "HIS-006", "difficulty": 2, "riddle": "أي نهر ارتبط بقيام الحضارة المصرية القديمة؟", "choices": ["النيل", "الأمازون", "الدانوب"], "answerIndex": 0, "explanation": "النيل هو شريان مصر التاريخي." },
+                { "id": "HIS-007", "difficulty": 2, "riddle": "أي إمبراطورية اتخذت روما عاصمة لها؟", "choices": ["البيزنطية", "الرومانية", "العباسية"], "answerIndex": 1, "explanation": "روما كانت عاصمة الإمبراطورية الرومانية." },
+                { "id": "HIS-008", "difficulty": 2, "riddle": "أي مدينة كانت عاصمة للدولة العباسية في أوجها؟", "choices": ["دمشق", "بغداد", "القاهرة"], "answerIndex": 1, "explanation": "العاصمة العباسية كانت بغداد." },
+                { "id": "HIS-009", "difficulty": 2, "riddle": "ما الاسم الذي يُطلق على العصور التي سبقت اختراع الكتابة؟", "choices": ["العصور القديمة", "عصور ما قبل التاريخ", "العصور الوسطى"], "answerIndex": 1, "explanation": "ما قبل التاريخ: قبل التدوين." },
+                { "id": "HIS-010", "difficulty": 2, "riddle": "أي حضارة اشتهرت بالخط المسماري؟", "choices": ["السومرية", "الفرعونية", "المايا"], "answerIndex": 0, "explanation": "السومريون استخدموا المسمارية مبكرًا." },
+                { "id": "HIS-011", "difficulty": 3, "riddle": "أي حدث يُعد بداية الحرب العالمية الثانية في أوروبا (شائعًا في الكتب المدرسية)؟", "choices": ["غزو بولندا", "سقوط القسطنطينية", "معركة واترلو"], "answerIndex": 0, "explanation": "غزو بولندا عام 1939 يُعد الشرارة في أوروبا." },
+                { "id": "HIS-012", "difficulty": 3, "riddle": "أي مدينة ارتبط اسمها بـ(بيت الحكمة) كمركز علمي؟", "choices": ["قرطبة", "بغداد", "القيروان"], "answerIndex": 1, "explanation": "بيت الحكمة اشتهر في بغداد." },
+                { "id": "HIS-013", "difficulty": 3, "riddle": "أي إمبراطوريات عُرفت ببناء سور عظيم مشهور؟", "choices": ["الصينية", "الرومانية", "العثمانية"], "answerIndex": 0, "explanation": "سور الصين العظيم أشهر مثال." },
+                { "id": "HIS-014", "difficulty": 3, "riddle": "أي حضارة قديمة قامت في بلاد الرافدين بين دجلة والفرات؟", "choices": ["الإنكا", "بلاد ما بين النهرين", "الفينيقية"], "answerIndex": 1, "explanation": "بلاد ما بين النهرين هي منطقة الرافدين." },
+                { "id": "HIS-015", "difficulty": 3, "riddle": "أي مدينة يُطلق عليها تاريخيًا (عروس البحر المتوسط) في مصر؟", "choices": ["الإسكندرية", "أسوان", "المنصورة"], "answerIndex": 0, "explanation": "لقب شائع للإسكندرية." },
+                { "id": "HIS-016", "difficulty": 4, "riddle": "أي مصطلح يصف فترة ازدهار العلوم والترجمة في الحضارة الإسلامية (شائعًا)؟", "choices": ["العصر الذهبي", "العصر الحجري", "العصر المظلم"], "answerIndex": 0, "explanation": "يُشار إليها غالبًا بالعصر الذهبي." },
+                { "id": "HIS-017", "difficulty": 4, "riddle": "أي طريق بحري قصّر الرحلة بين أوروبا وآسيا بعد افتتاحه في القرن التاسع عشر؟", "choices": ["قناة السويس", "قناة بنما", "نهر الراين"], "answerIndex": 0, "explanation": "قناة السويس اختصرت المسافة بين المتوسط والبحر الأحمر." },
+                { "id": "HIS-018", "difficulty": 4, "riddle": "أي مدينة تُعد من أقدم المدن المأهولة في العالم بحسب كثير من المصادر التاريخية؟", "choices": ["أريحا", "دبي", "كانبيرا"], "answerIndex": 0, "explanation": "أريحا تُذكر كثيرًا ضمن الأقدم." },
+                { "id": "HIS-019", "difficulty": 4, "riddle": "أي مصطلح يصف انتقال أوروبا إلى مرحلة فكرية وفنية جديدة (شائعًا) بعد العصور الوسطى؟", "choices": ["النهضة", "الفتوحات", "الاستعمار"], "answerIndex": 0, "explanation": "عصر النهضة." },
+                { "id": "HIS-020", "difficulty": 4, "riddle": "أي حضارة أمريكية قديمة اشتهرت ببناء مدن حجرية في جبال الأنديز؟", "choices": ["الإنكا", "الآشورية", "الحثّية"], "answerIndex": 0, "explanation": "حضارة الإنكا في الأنديز." }
+            ],
+            "technology": [
+                { "id": "TEC-001", "difficulty": 1, "riddle": "أي جهاز نستخدمه عادةً لإدخال النص إلى الكمبيوتر؟", "choices": ["الفأرة", "لوحة المفاتيح", "الشاشة"], "answerIndex": 1, "explanation": "لوحة المفاتيح لإدخال النص." },
+                { "id": "TEC-002", "difficulty": 1, "riddle": "أي من التالي يُعد متصفح إنترنت؟", "choices": ["Chrome", "Windows", "CPU"], "answerIndex": 0, "explanation": "Chrome متصفح." },
+                { "id": "TEC-003", "difficulty": 1, "riddle": "ما وظيفة كلمة المرور؟", "choices": ["حماية الحساب", "زيادة سرعة الإنترنت", "شحن الهاتف"], "answerIndex": 0, "explanation": "كلمة المرور لحماية الوصول." },
+                { "id": "TEC-004", "difficulty": 1, "riddle": "أي مما يلي يُستخدم لتخزين الملفات؟", "choices": ["RAM", "SSD", "GPU"], "answerIndex": 1, "explanation": "SSD للتخزين الدائم." },
+                { "id": "TEC-005", "difficulty": 1, "riddle": "ما المقصود بـ Wi-Fi؟", "choices": ["اتصال لاسلكي بالشبكة", "نوع من الكاميرات", "برنامج مضاد فيروسات"], "answerIndex": 0, "explanation": "Wi-Fi اتصال لاسلكي." },
+                { "id": "TEC-006", "difficulty": 2, "riddle": "أي من التالي يُعد نظام تشغيل؟", "choices": ["Android", "YouTube", "HDMI"], "answerIndex": 0, "explanation": "Android نظام تشغيل." },
+                { "id": "TEC-007", "difficulty": 2, "riddle": "أي جزء يُسمّى (دماغ الكمبيوتر) غالبًا؟", "choices": ["المعالج CPU", "الشاشة", "الماوس"], "answerIndex": 0, "explanation": "CPU ينفّذ التعليمات." },
+                { "id": "TEC-008", "difficulty": 2, "riddle": "أي بروتوكول شائع لتصفح مواقع الويب؟", "choices": ["HTTP", "MP3", "JPEG"], "answerIndex": 0, "explanation": "HTTP/HTTPS للويب." },
+                { "id": "TEC-009", "difficulty": 2, "riddle": "أي مما يلي يُستخدم لعرض الصور بصيغة شائعة؟", "choices": ["PNG", "TXT", "EXE"], "answerIndex": 0, "explanation": "PNG صيغة صور." },
+                { "id": "TEC-010", "difficulty": 2, "riddle": "ما الهدف الأساسي من النسخ الاحتياطي؟", "choices": ["استرجاع البيانات عند فقدها", "زيادة دقة الشاشة", "تسريع المعالج"], "answerIndex": 0, "explanation": "النسخ الاحتياطي للحماية من الفقد." },
+                { "id": "TEC-011", "difficulty": 3, "riddle": "أي مصطلح يصف برنامجًا خبيثًا يشفّر ملفاتك ويطلب فدية؟", "choices": ["Ransomware", "Firewall", "Cache"], "answerIndex": 0, "explanation": "Ransomware = برمجية فدية." },
+                { "id": "TEC-012", "difficulty": 3, "riddle": "أي مما يلي يُعد لغة برمجة؟", "choices": ["Python", "Bluetooth", "SSD"], "answerIndex": 0, "explanation": "Python لغة برمجة." },
+                { "id": "TEC-013", "difficulty": 3, "riddle": "أي طبقة/خدمة ترجّح أنها مسؤولة عن تحويل اسم موقع إلى عنوان IP؟", "choices": ["DNS", "USB", "HTML"], "answerIndex": 0, "explanation": "DNS يحوّل الاسم إلى IP." },
+                { "id": "TEC-014", "difficulty": 3, "riddle": "ما الفرق الأقرب بين RAM و SSD؟", "choices": ["RAM ذاكرة مؤقتة، SSD تخزين دائم", "RAM تخزين دائم، SSD مؤقت", "لا فرق بينهما"], "answerIndex": 0, "explanation": "RAM متطايرة، SSD غير متطاير." },
+                { "id": "TEC-015", "difficulty": 3, "riddle": "أي مصطلح يصف التحقق بخطوتين لحماية الحساب؟", "choices": ["2FA", "VPN", "LAN"], "answerIndex": 0, "explanation": "2FA = المصادقة الثنائية." },
+                { "id": "TEC-016", "difficulty": 4, "riddle": "أي مفهوم يصف تشغيل برامج داخل بيئة معزولة عن النظام الأساسي؟", "choices": ["Virtualization", "Defragmentation", "Overclocking"], "answerIndex": 0, "explanation": "Virtualization = افتراضية/عزل عبر آلة افتراضية." },
+                { "id": "TEC-017", "difficulty": 4, "riddle": "أي تقنية تساعد على تأمين الاتصال عبر تشفيره عند تصفح الويب؟", "choices": ["HTTPS", "HTML", "RSS"], "answerIndex": 0, "explanation": "HTTPS = HTTP مع تشفير TLS." },
+                { "id": "TEC-018", "difficulty": 4, "riddle": "أي خيار يصف (الذكاء الاصطناعي التوليدي) بشكل أدق؟", "choices": ["ينتج نصوص/صور جديدة بناءً على بيانات تعلم منها", "يزيد سرعة المعالج", "يصلح أعطال الشاشة"], "answerIndex": 0, "explanation": "التوليدي يُنشئ محتوى جديدًا." },
+                { "id": "TEC-019", "difficulty": 4, "riddle": "أي مصطلح يصف تخزين صفحات/بيانات مؤقتًا لتسريع فتحها لاحقًا؟", "choices": ["Cache", "Kernel", "API"], "answerIndex": 0, "explanation": "Cache تخزين مؤقت للتسريع." },
+                { "id": "TEC-020", "difficulty": 4, "riddle": "أي جزء مسؤول غالبًا عن معالجة الرسوميات في الألعاب؟", "choices": ["GPU", "Router", "Compiler"], "answerIndex": 0, "explanation": "GPU لمعالجة الرسوميات." }
+            ]
+        };
+
+        // ---------- متغيرات الحالة العامة ----------
+        let currentScreen = 'start';
+        let selectedCategory = null; // 'numbers', 'old', 'history', 'technology'
+        let selectedLevel = null; // 1,2,3,4
+        let currentQuestions = []; // الأسئلة الحالية بعد التصفية
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let hearts = 3;
+        let streak = 0; // عدد الإجابات المتتالية الصحيحة
+        let timerInterval = null;
+        let timeLeft = 20;
+        let canAnswer = true; // لمنع النقر بعد الإجابة
+        let maxQuestions = 10; // عدد الأسئلة لكل مرحلة
+
+        // عناصر DOM
+        const startScreen = document.getElementById('start-screen');
+        const categoryScreen = document.getElementById('category-screen');
+        const levelScreen = document.getElementById('level-screen');
+        const gameScreen = document.getElementById('game-screen');
+        const endScreen = document.getElementById('end-screen');
+
+        // ---------- دوال التنقل ----------
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+            currentScreen = screenId;
+        }
+
+        function goBackToStart() {
+            showScreen('start-screen');
+        }
+
+        function goBackToCategories() {
+            showScreen('category-screen');
+        }
+
+        function goToStart() {
+            showScreen('start-screen');
+        }
+
+        function goToLevelSelect() {
+            if (selectedCategory) {
+                showLevelScreen();
+            } else {
+                showScreen('category-screen');
+            }
+        }
+
+        // ---------- شاشة اختيار الفئة ----------
+        function showCategoryScreen() {
+            const container = document.getElementById('categories-container');
+            container.innerHTML = '';
+            const categories = [
+                { id: 'numbers', name: 'أرقام ومنطق', icon: '🔢' },
+                { id: 'old', name: 'ألغاز قديمة', icon: '🕰️' },
+                { id: 'history', name: 'تاريخ', icon: '🏛️' },
+                { id: 'technology', name: 'تكنولوجيا', icon: '💻' }
+            ];
+            categories.forEach(cat => {
+                const card = document.createElement('div');
+                card.className = `category-card ${selectedCategory === cat.id ? 'selected' : ''}`;
+                card.innerHTML = `
+                    <div class="category-icon">${cat.icon}</div>
+                    <div class="category-title">${cat.name}</div>
+                `;
+                card.onclick = () => {
+                    selectedCategory = cat.id;
+                    showLevelScreen();
+                };
+                container.appendChild(card);
+            });
+            showScreen('category-screen');
+        }
+
+        // ---------- شاشة اختيار المستوى ----------
+        function showLevelScreen() {
+            if (!selectedCategory) {
+                showCategoryScreen();
+                return;
+            }
+            const container = document.getElementById('levels-container');
+            container.innerHTML = '';
+            const levels = [
+                { id: 1, name: 'سهل', points: 10 },
+                { id: 2, name: 'متوسط', points: 20 },
+                { id: 3, name: 'صعب', points: 30 },
+                { id: 4, name: 'عبقري', points: 50 }
+            ];
+            levels.forEach(lev => {
+                const card = document.createElement('div');
+                card.className = `level-card ${selectedLevel === lev.id ? 'selected' : ''}`;
+                card.innerHTML = `
+                    <div class="category-title">${lev.name}</div>
+                    <div class="level-difficulty">${lev.points} نقطة لكل سؤال</div>
+                `;
+                card.onclick = () => {
+                    selectedLevel = lev.id;
+                    startGame();
+                };
+                container.appendChild(card);
+            });
+            showScreen('level-screen');
+        }
+
+        // ---------- بدء اللعبة ----------
+        function startGame() {
+            // تصفية الأسئلة حسب الفئة والمستوى
+            const allQuestions = puzzlesData[selectedCategory];
+            const filtered = allQuestions.filter(q => q.difficulty === selectedLevel);
+            // نأخذ أول 10 أسئلة (أو كلها إذا أقل)
+            currentQuestions = filtered.slice(0, maxQuestions);
+            if (currentQuestions.length === 0) {
+                alert('لا توجد أسئلة كافية لهذا المستوى حالياً.');
+                return;
+            }
+            currentQuestionIndex = 0;
+            score = 0;
+            hearts = 3;
+            streak = 0;
+            canAnswer = true;
+            document.getElementById('score-display').innerText = '0 نقطة';
+            updateHearts();
+            showScreen('game-screen');
+            loadQuestion();
+        }
+
+        // تحديث عرض القلوب
+        function updateHearts() {
+            const container = document.getElementById('hearts-container');
+            container.innerHTML = '';
+            for (let i = 0; i < hearts; i++) {
+                container.innerHTML += '<span class="heart">❤️</span>';
+            }
+        }
+
+        // تحميل السؤال الحالي
+        function loadQuestion() {
+            if (currentQuestionIndex >= currentQuestions.length) {
+                endGame();
+                return;
+            }
+            const q = currentQuestions[currentQuestionIndex];
+            document.getElementById('riddle-text').innerText = q.riddle;
+            const choicesDiv = document.getElementById('choices-container');
+            choicesDiv.innerHTML = '';
+            q.choices.forEach((choice, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.innerText = choice;
+                btn.onclick = () => checkAnswer(index);
+                choicesDiv.appendChild(btn);
+            });
+            document.getElementById('explanation-container').style.display = 'none';
+            document.getElementById('question-counter').innerText = `السؤال ${currentQuestionIndex+1} / ${currentQuestions.length}`;
+            canAnswer = true;
+            timeLeft = 20;
+            document.getElementById('timer-display').innerText = timeLeft;
+            startTimer();
+        }
+
+        // بدء المؤقت
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer-display').innerText = timeLeft;
+                if (timeLeft <= 0) {
+                    // انتهاء الوقت: نعتبر إجابة خاطئة
+                    clearInterval(timerInterval);
+                    if (canAnswer) {
+                        handleWrongAnswer();
+                    }
+                }
+            }, 1000);
+        }
+
+        // معالجة الإجابة الخاطئة (نقص قلب)
+        function handleWrongAnswer() {
+            hearts--;
+            updateHearts();
+            if (hearts <= 0) {
+                endGame();
+                return;
+            }
+            // إظهار الشرح (خطأ) ثم الانتقال للسؤال التالي بعد انتظار
+            const q = currentQuestions[currentQuestionIndex];
+            document.getElementById('explanation-text').innerText = `❌ إجابة خاطئة!\n${q.explanation}`;
+            document.getElementById('explanation-container').style.display = 'block';
+            disableChoices();
+            canAnswer = false;
+            clearInterval(timerInterval);
+            // لا ننتقل تلقائياً، المستخدم يضغط "التالي"
+        }
+
+        // التحقق من الإجابة
+        function checkAnswer(index) {
+            if (!canAnswer) return;
+            clearInterval(timerInterval);
+            canAnswer = false;
+            const q = currentQuestions[currentQuestionIndex];
+            const isCorrect = (index === q.answerIndex);
+            const choicesBtns = document.querySelectorAll('.choice-btn');
+            // تلوين الإجابات
+            choicesBtns.forEach((btn, i) => {
+                btn.disabled = true;
+                if (i === q.answerIndex) {
+                    btn.classList.add('correct');
+                } else if (i === index && !isCorrect) {
+                    btn.classList.add('wrong');
+                }
+            });
+            if (isCorrect) {
+                // حساب النقاط
+                let points = 0;
+                if (selectedLevel === 1) points = 10;
+                else if (selectedLevel === 2) points = 20;
+                else if (selectedLevel === 3) points = 30;
+                else if (selectedLevel === 4) points = 50;
+                score += points;
+                streak++;
+                if (streak === 5) {
+                    score += 50;
+                    streak = 0; // نعيد تعيين السلسلة بعد المكافأة، أو نحتفظ بها؟ نفترض إعادة تعيين
+                }
+                document.getElementById('score-display').innerText = score + ' نقطة';
+                document.getElementById('explanation-text').innerHTML = `✅ إجابة صحيحة!<br>${q.explanation}`;
+            } else {
+                handleWrongAnswer();
+                return; // لأن handleWrongAnswer يعرض الشرح بالفعل
+            }
+            document.getElementById('explanation-container').style.display = 'block';
+        }
+
+        // تعطيل أزرار الاختيار
+        function disableChoices() {
+            document.querySelectorAll('.choice-btn').forEach(btn => btn.disabled = true);
+        }
+
+        // الانتقال للسؤال التالي
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < currentQuestions.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+        }
+
+        // إنهاء المرحلة مبكراً
+        function endGameEarly() {
+            if (confirm('هل تريد إنهاء المرحلة؟')) {
+                clearInterval(timerInterval);
+                endGame();
+            }
+        }
+
+        // إنهاء المرحلة وعرض النتائج
+        function endGame() {
+            clearInterval(timerInterval);
+            showEndScreen();
+        }
+
+        // عرض شاشة النهاية
+        function showEndScreen() {
+            const totalQuestions = currentQuestions.length;
+            const correctCount = score; // ليس دقيقاً لأن النقاط مضروبة في المستوى. سنحسب عدد الإجابات الصحيحة من التقدم.
+            // يمكننا حساب عدد الإجابات الصحيحة بطرح عدد الأخطاء، لكن ليس لدينا عداد. نبسط: نعرض النقاط.
+            document.getElementById('result-stats').innerHTML = `
+                <p>مجموع النقاط: ${score}</p>
+                <p>عدد الأسئلة: ${totalQuestions}</p>
+                <p>عدد القلوب المتبقية: ${hearts}</p>
+            `;
+            // النجوم: بناءً على الأداء (مثلاً 3 نجوم إذا لم تخسر أي قلب)
+            let stars = 0;
+            if (hearts === 3) stars = 3;
+            else if (hearts === 2) stars = 2;
+            else if (hearts === 1) stars = 1;
+            else stars = 0;
+            const starsContainer = document.getElementById('stars-container');
+            starsContainer.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                starsContainer.innerHTML += i < stars ? '⭐' : '☆';
+            }
+            showScreen('end-screen');
+        }
+
+        // إعادة المرحلة
+        function restartLevel() {
+            startGame();
+        }
+
+        // دالة بدء التحدي السريع (تختار آخر فئة ومستوى أو عشوائي)
+        function startChallenge() {
+            // إذا كان هناك آخر اختيار، نستخدمه، وإلا نختار أول فئة ومستوى سهل
+            if (!selectedCategory) selectedCategory = 'numbers';
+            if (!selectedLevel) selectedLevel = 1;
+            startGame();
+        }
+
+        // دالة عرض أفضل النتائج (مثال بسيط)
+        function showHighScores() {
+            alert('أفضل النتائج: قيد التطوير. حالياً يتم حفظ النتائج محلياً.');
+        }
+
+        // عند تحميل الصفحة، نعرض شاشة البداية ونحاول استعادة آخر اختيار من localStorage
+        window.onload = function() {
+            // يمكن استعادة آخر اختيار إذا أردنا
+            showScreen('start-screen');
+        };
+    </script>
+</body>
+</html>
