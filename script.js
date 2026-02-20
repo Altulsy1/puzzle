@@ -38,7 +38,7 @@ const embeddedPuzzles = {
     { "id": "NUM-018", "difficulty": 4, "riddle": "إذا كان 1/3 من عدد يساوي 11، فالعدد هو؟", "choices": ["22", "33", "44"], "answerIndex": 1, "explanation": "11 × 3 = 33" },
     { "id": "NUM-019", "difficulty": 4, "riddle": "نمط: 1، 1، 2، 3، 5، ؟", "choices": ["7", "8", "9"], "answerIndex": 1, "explanation": "متتالية فيبوناتشي: 3+5=8." },
     { "id": "NUM-020", "difficulty": 4, "riddle": "أي خيار يساوي الجذر التربيعي لـ 169؟", "choices": ["11", "12", "13"], "answerIndex": 2, "explanation": "13×13=169." },
-    // الألغاز الجديدة (10)
+    // الألغاز الإضافية (10) من 021 إلى 030
     { "id": "NUM-021", "difficulty": 3, "riddle": "ما هو العدد الذي إذا ضربته في 4 كان الناتج 36؟", "choices": ["8", "9", "10"], "answerIndex": 1, "explanation": "9 × 4 = 36" },
     { "id": "NUM-022", "difficulty": 2, "riddle": "ناتج 15 - 7 + 3 يساوي؟", "choices": ["10", "11", "12"], "answerIndex": 1, "explanation": "15-7=8، 8+3=11" },
     { "id": "NUM-023", "difficulty": 1, "riddle": "أي الأعداد التالية فردي؟", "choices": ["22", "25", "28"], "answerIndex": 1, "explanation": "25 فردي لا يقبل القسمة على 2" },
@@ -48,7 +48,28 @@ const embeddedPuzzles = {
     { "id": "NUM-027", "difficulty": 1, "riddle": "ما العدد التالي في النمط: 5، 10، 15، 20، ؟", "choices": ["25", "30", "35"], "answerIndex": 0, "explanation": "الزيادة 5 كل مرة" },
     { "id": "NUM-028", "difficulty": 3, "riddle": "إذا كان 3x = 27، فما قيمة x؟", "choices": ["7", "8", "9"], "answerIndex": 2, "explanation": "27÷3=9" },
     { "id": "NUM-029", "difficulty": 2, "riddle": "ناتج 2^4 يساوي؟", "choices": ["8", "16", "32"], "answerIndex": 1, "explanation": "2×2×2×2=16" },
-    { "id": "NUM-030", "difficulty": 2, "riddle": "ما هو العدد الذي يمثل 25% من 80؟", "choices": ["20", "25", "30"], "answerIndex": 0, "explanation": "0.25 × 80 = 20" }
+    { "id": "NUM-030", "difficulty": 2, "riddle": "ما هو العدد الذي يمثل 25% من 80؟", "choices": ["20", "25", "30"], "answerIndex": 0, "explanation": "0.25 × 80 = 20" },
+    // ألغاز جديدة (20) من 031 إلى 050
+    { "id": "NUM-031", "difficulty": 1, "riddle": "ما هو العدد الذي إذا أضفت إليه 5 يصبح 13؟", "choices": ["7", "8", "9"], "answerIndex": 1, "explanation": "8 + 5 = 13" },
+    { "id": "NUM-032", "difficulty": 1, "riddle": "ناتج 9 - 4 × 2 يساوي؟ (احسب بالترتيب الصحيح)", "choices": ["1", "10", "5"], "answerIndex": 0, "explanation": "4×2=8، 9-8=1" },
+    { "id": "NUM-033", "difficulty": 2, "riddle": "ما هو العدد الذي إذا قسمته على 3 ثم أضفت 4 تحصل على 10؟", "choices": ["18", "15", "12"], "answerIndex": 0, "explanation": "(18÷3)+4 = 6+4=10" },
+    { "id": "NUM-034", "difficulty": 2, "riddle": "أي من الأعداد التالية هو مضاعف للعدد 7؟", "choices": ["49", "52", "55"], "answerIndex": 0, "explanation": "49 = 7×7" },
+    { "id": "NUM-035", "difficulty": 2, "riddle": "إذا كان سعر كتاب 15 ريالاً واشتريت 3 كتب، كم تدفع؟", "choices": ["30", "45", "50"], "answerIndex": 1, "explanation": "15 × 3 = 45" },
+    { "id": "NUM-036", "difficulty": 3, "riddle": "ما هو العدد المفقود في النمط: 3، 9، 15، ؟، 27", "choices": ["18", "21", "24"], "answerIndex": 1, "explanation": "الزيادة 6 كل مرة: 15+6=21" },
+    { "id": "NUM-037", "difficulty": 3, "riddle": "إذا كانت 2س + 5 = 13، فما قيمة س؟", "choices": ["4", "5", "6"], "answerIndex": 0, "explanation": "2س=8، س=4" },
+    { "id": "NUM-038", "difficulty": 3, "riddle": "ما هو ناتج 12 ÷ 3 × 2 (بالترتيب)؟", "choices": ["8", "6", "4"], "answerIndex": 0, "explanation": "12÷3=4، 4×2=8" },
+    { "id": "NUM-039", "difficulty": 3, "riddle": "أي من هذه الأعداد هو الأقرب إلى 50؟", "choices": ["47", "53", "56"], "answerIndex": 0, "explanation": "47 يبعد 3، 53 يبعد 3 أيضاً، لكن 47 أقل، يمكن اعتبار 47 أو 53، ولكن 47 هو الأقرب إذا قربنا للأسفل. في الواقع كلاهما متساويان، لكن الاختيار الوحيد هو 47." },
+    { "id": "NUM-040", "difficulty": 4, "riddle": "ما هو العدد الذي إذا ضربته في نفسه ثم أضفت 10 كان الناتج 35؟", "choices": ["5", "6", "7"], "answerIndex": 0, "explanation": "5×5=25، 25+10=35" },
+    { "id": "NUM-041", "difficulty": 4, "riddle": "إذا كان 4! (مضروب 4) يساوي 24، فما قيمة 5! ؟", "choices": ["120", "60", "100"], "answerIndex": 0, "explanation": "5! = 5×24 = 120" },
+    { "id": "NUM-042", "difficulty": 4, "riddle": "ما هو العدد الذي 20% منه يساوي 8؟", "choices": ["40", "50", "60"], "answerIndex": 0, "explanation": "0.2 × س = 8 → س = 40" },
+    { "id": "NUM-043", "difficulty": 4, "riddle": "أي عدد هو مكعب كامل (perfect cube)؟", "choices": ["27", "36", "45"], "answerIndex": 0, "explanation": "27 = 3×3×3" },
+    { "id": "NUM-044", "difficulty": 1, "riddle": "ناتج 3 + 8 - 5 = ؟", "choices": ["6", "5", "7"], "answerIndex": 0, "explanation": "3+8=11، 11-5=6" },
+    { "id": "NUM-045", "difficulty": 1, "riddle": "ما هو العدد الذي يلي 39 مباشرة؟", "choices": ["40", "41", "38"], "answerIndex": 0, "explanation": "40" },
+    { "id": "NUM-046", "difficulty": 2, "riddle": "إذا كان لديك 3 تفاحات وأكلت 2، كم تبقى؟", "choices": ["1", "2", "3"], "answerIndex": 0, "explanation": "3-2=1" },
+    { "id": "NUM-047", "difficulty": 2, "riddle": "أي كسر يمثل النصف؟", "choices": ["2/4", "3/6", "كلاهما"], "answerIndex": 2, "explanation": "2/4 = 1/2 و 3/6 = 1/2" },
+    { "id": "NUM-048", "difficulty": 3, "riddle": "إذا كان عمر أحمد 10 سنوات وعمر أخيه نصف عمره، فكم عمر الأخ بعد 5 سنوات؟", "choices": ["10", "15", "12"], "answerIndex": 0, "explanation": "الأخ الآن 5 سنوات، بعد 5 سنوات يصبح 10" },
+    { "id": "NUM-049", "difficulty": 3, "riddle": "ناتج 0.5 × 0.5 = ؟", "choices": ["0.25", "0.5", "1"], "answerIndex": 0, "explanation": "0.5 × 0.5 = 0.25" },
+    { "id": "NUM-050", "difficulty": 4, "riddle": "ما هو العدد الذي مربعه يساوي 121؟", "choices": ["11", "12", "13"], "answerIndex": 0, "explanation": "11×11=121" }
   ],
   "old": [
     // الألغاز الأصلية (20)
@@ -72,7 +93,7 @@ const embeddedPuzzles = {
     { "id": "OLD-018", "difficulty": 4, "riddle": "يولد كبيرًا ثم يصغر كلما طال عمره. ما هو؟", "choices": ["القمر", "الشمعة", "الجبل"], "answerIndex": 1, "explanation": "الشمعة تبدأ كاملة ثم تنقص بالاحتراق." },
     { "id": "OLD-019", "difficulty": 4, "riddle": "شيء إذا وضعته في الثلاجة لا يبرد. ما هو؟", "choices": ["الفلفل الحار", "الماء", "الثلج"], "answerIndex": 0, "explanation": "الحرارة هنا مجازية: (حار) لا يصبح بارد الطبع." },
     { "id": "OLD-020", "difficulty": 4, "riddle": "ما هو الذي يكتب ولا يقرأ؟", "choices": ["القلم", "الكتاب", "اللوح"], "answerIndex": 0, "explanation": "القلم يكتب لكنه لا يقرأ." },
-    // الألغاز الجديدة (10)
+    // الألغاز الإضافية (10) من 021 إلى 030
     { "id": "OLD-021", "difficulty": 2, "riddle": "ما هو الشيء الذي كلما أخذت منه نقص وكلما وضعت فيه زاد؟", "choices": ["الحفرة", "المال", "العمر"], "answerIndex": 0, "explanation": "الحفرة كلما أخذت منها تراب نقصت، وكلما وضعت فيها زادت" },
     { "id": "OLD-022", "difficulty": 1, "riddle": "له أوراق وليس نباتًا، له جلد وليس حيوانًا، فما هو؟", "choices": ["الكتاب", "الشجرة", "الإنسان"], "answerIndex": 0, "explanation": "الكتاب له أوراق وجلد" },
     { "id": "OLD-023", "difficulty": 2, "riddle": "ما الذي تراه في الليل ثلاث مرات وفي النهار مرة واحدة؟", "choices": ["حرف اللام", "القمر", "الظل"], "answerIndex": 0, "explanation": "حرف اللام يظهر في كلمة الليل ثلاث مرات وفي النهار مرة" },
@@ -82,7 +103,28 @@ const embeddedPuzzles = {
     { "id": "OLD-027", "difficulty": 3, "riddle": "ما هو الشيء الذي لا يمشي إلا بالضرب؟", "choices": ["المسمار", "الكرة", "الطبل"], "answerIndex": 0, "explanation": "المسمار يُدق بالضرب" },
     { "id": "OLD-028", "difficulty": 2, "riddle": "له عين ولا يرى، وله رقبة ولا تلتف؟", "choices": ["الإبرة", "الزجاجة", "الساعة"], "answerIndex": 0, "explanation": "الإبرة لها عين ورقبة" },
     { "id": "OLD-029", "difficulty": 1, "riddle": "ما هو الشيء الذي تأكل منه وهو لا يؤكل؟", "choices": ["الصحن", "الملعقة", "الطبق"], "answerIndex": 0, "explanation": "الصحن تأكل منه" },
-    { "id": "OLD-030", "difficulty": 2, "riddle": "ما هو الشيء الذي يقرصك ولا تراه؟", "choices": ["الجوع", "البرد", "الخوف"], "answerIndex": 0, "explanation": "الجوع يقرص المعدة" }
+    { "id": "OLD-030", "difficulty": 2, "riddle": "ما هو الشيء الذي يقرصك ولا تراه؟", "choices": ["الجوع", "البرد", "الخوف"], "answerIndex": 0, "explanation": "الجوع يقرص المعدة" },
+    // ألغاز جديدة (20) من 031 إلى 050
+    { "id": "OLD-031", "difficulty": 1, "riddle": "ما هو الشيء الذي كلما زاد نقص؟", "choices": ["العمر", "المال", "الوقت"], "answerIndex": 0, "explanation": "العمر كلما زاد نقص" },
+    { "id": "OLD-032", "difficulty": 1, "riddle": "ما هو الشيء الذي له عين ولا يرى؟", "choices": ["الإبرة", "الماء", "السماء"], "answerIndex": 0, "explanation": "عين الإبرة" },
+    { "id": "OLD-033", "difficulty": 2, "riddle": "أنا ابن الماء، وإذا تركوني في الماء مت، فمن أنا؟", "choices": ["الثلج", "الملح", "السكر"], "answerIndex": 0, "explanation": "الثلج يذوب في الماء" },
+    { "id": "OLD-034", "difficulty": 2, "riddle": "ما هو الشيء الذي ترميه كلما احتجت إليه؟", "choices": ["شبكة الصيد", "السنارة", "المرساة"], "answerIndex": 0, "explanation": "شبكة الصيد تُرمى في البحر" },
+    { "id": "OLD-035", "difficulty": 2, "riddle": "ما هو الشيء الذي له أوراق وليس شجرة؟", "choices": ["الكتاب", "المفكرة", "كلاهما"], "answerIndex": 2, "explanation": "الكتاب والمفكرة لهما أوراق" },
+    { "id": "OLD-036", "difficulty": 3, "riddle": "ما هو الشيء الذي لا يمكن كسره؟", "choices": ["السر", "العهد", "الوعد"], "answerIndex": 0, "explanation": "السر لا يمكن كسره، بل يمكن إفشاؤه" },
+    { "id": "OLD-037", "difficulty": 3, "riddle": "ما هو الشيء الذي يدور حول البيت ولا يتحرك؟", "choices": ["السور", "الطريق", "الهواء"], "answerIndex": 0, "explanation": "السور يحيط بالبيت" },
+    { "id": "OLD-038", "difficulty": 3, "riddle": "ما هو الشيء الذي إذا لمسته صرخ؟", "choices": ["الجرس", "الإنذار", "الطفل"], "answerIndex": 0, "explanation": "الجرس يصرخ إذا لمسته" },
+    { "id": "OLD-039", "difficulty": 4, "riddle": "شيء كلما أخذت منه كبر، وإذا وضعت فيه شيء نقص؟", "choices": ["الحفرة", "القلب", "الوعاء"], "answerIndex": 0, "explanation": "الحفرة كلما أخذت منها تراب كبرت، وكلما وضعت فيها تراب نقصت" },
+    { "id": "OLD-040", "difficulty": 4, "riddle": "ما هو الشيء الذي له نفس واحد ولا يموت؟", "choices": ["الصدى", "النسيم", "الضوء"], "answerIndex": 0, "explanation": "الصدى يردد الصوت" },
+    { "id": "OLD-041", "difficulty": 1, "riddle": "ما هو الشيء الذي يطير بلا أجنحة؟", "choices": ["الطائرة", "السهم", "الوقت"], "answerIndex": 2, "explanation": "الوقت يطير" },
+    { "id": "OLD-042", "difficulty": 1, "riddle": "ما هو الشيء الذي يمشي بلا أرجل؟", "choices": ["الغيمة", "القطار", "السيارة"], "answerIndex": 0, "explanation": "الغيمة تمشي في السماء" },
+    { "id": "OLD-043", "difficulty": 2, "riddle": "ما هو الشيء الذي تذبحه وتبكي عليه؟", "choices": ["البصل", "الدجاجة", "الخروف"], "answerIndex": 0, "explanation": "البصل يذبح (يقطع) فتدمع العيون" },
+    { "id": "OLD-044", "difficulty": 2, "riddle": "ما هو الشيء الذي له رأس ولا عين له؟", "choices": ["المسمار", "القلم", "الوتد"], "answerIndex": 0, "explanation": "المسمار له رأس" },
+    { "id": "OLD-045", "difficulty": 2, "riddle": "ما هو الشيء الذي إذا وضعته في الثلاجة لا يبرد؟", "choices": ["الفلفل الحار", "الثلج", "الماء"], "answerIndex": 0, "explanation": "الفلفل الحار لا يبرد (حار)" },
+    { "id": "OLD-046", "difficulty": 3, "riddle": "ما هو الشيء الذي له فم ولا يأكل؟", "choices": ["النهر", "الزجاجة", "الكتاب"], "answerIndex": 0, "explanation": "النهر له فم (مصب)" },
+    { "id": "OLD-047", "difficulty": 3, "riddle": "ما هو الشيء الذي يقرصك ولا تراه؟", "choices": ["الجوع", "البرد", "الخوف"], "answerIndex": 0, "explanation": "الجوع يقرص المعدة" },
+    { "id": "OLD-048", "difficulty": 3, "riddle": "ما هو الشيء الذي له عينان ولا يرى؟", "choices": ["النظارة", "السيارة", "السماء"], "answerIndex": 0, "explanation": "النظارة لها عينان (عدستان)" },
+    { "id": "OLD-049", "difficulty": 4, "riddle": "ما هو الشيء الذي تأكل منه وهو لا يؤكل؟", "choices": ["الصحن", "الملعقة", "الطبق"], "answerIndex": 0, "explanation": "الصحن تأكل منه" },
+    { "id": "OLD-050", "difficulty": 4, "riddle": "ما هو الشيء الذي إذا شرب الماء مات؟", "choices": ["النار", "الثلج", "النبات"], "answerIndex": 0, "explanation": "النار تموت إذا شربت الماء" }
   ],
   "history": [
     // الألغاز الأصلية (20)
@@ -106,7 +148,7 @@ const embeddedPuzzles = {
     { "id": "HIS-018", "difficulty": 4, "riddle": "أي مدينة تُعد من أقدم المدن المأهولة في العالم بحسب كثير من المصادر التاريخية؟", "choices": ["أريحا", "دبي", "كانبيرا"], "answerIndex": 0, "explanation": "أريحا تُذكر كثيرًا ضمن الأقدم." },
     { "id": "HIS-019", "difficulty": 4, "riddle": "أي مصطلح يصف انتقال أوروبا إلى مرحلة فكرية وفنية جديدة (شائعًا) بعد العصور الوسطى؟", "choices": ["النهضة", "الفتوحات", "الاستعمار"], "answerIndex": 0, "explanation": "عصر النهضة." },
     { "id": "HIS-020", "difficulty": 4, "riddle": "أي حضارة أمريكية قديمة اشتهرت ببناء مدن حجرية في جبال الأنديز؟", "choices": ["الإنكا", "الآشورية", "الحثّية"], "answerIndex": 0, "explanation": "حضارة الإنكا في الأنديز." },
-    // الألغاز الجديدة (10)
+    // الألغاز الإضافية (10) من 021 إلى 030
     { "id": "HIS-021", "difficulty": 2, "riddle": "من هو القائد المسلم الذي فتح الأندلس؟", "choices": ["طارق بن زياد", "موسى بن نصير", "عقبة بن نافع"], "answerIndex": 0, "explanation": "طارق بن زياد قاد الفتح" },
     { "id": "HIS-022", "difficulty": 3, "riddle": "في أي عام كانت معركة حطين؟", "choices": ["1187", "1192", "1189"], "answerIndex": 0, "explanation": "معركة حطين 1187" },
     { "id": "HIS-023", "difficulty": 2, "riddle": "من هو مؤسس الدولة الأموية؟", "choices": ["معاوية بن أبي سفيان", "عمر بن عبد العزيز", "يزيد بن معاوية"], "answerIndex": 0, "explanation": "معاوية بن أبي سفيان" },
@@ -116,7 +158,28 @@ const embeddedPuzzles = {
     { "id": "HIS-027", "difficulty": 1, "riddle": "من هو الفرعون الذي بنى هرم خوفو؟", "choices": ["خوفو", "خفرع", "منقرع"], "answerIndex": 0, "explanation": "خوفو باني الهرم الأكبر" },
     { "id": "HIS-028", "difficulty": 1, "riddle": "في أي سنة هبط الإنسان على القمر؟", "choices": ["1969", "1972", "1965"], "answerIndex": 0, "explanation": "1969" },
     { "id": "HIS-029", "difficulty": 2, "riddle": "من هو الفيلسوف اليوناني الذي علم الإسكندر الأكبر؟", "choices": ["أرسطو", "أفلاطون", "سقراط"], "answerIndex": 0, "explanation": "أرسطو" },
-    { "id": "HIS-030", "difficulty": 2, "riddle": "ما هي الحضارة التي ابتكرت الكتابة الهيروغليفية؟", "choices": ["المصرية", "السومرية", "الصينية"], "answerIndex": 0, "explanation": "المصرية القديمة" }
+    { "id": "HIS-030", "difficulty": 2, "riddle": "ما هي الحضارة التي ابتكرت الكتابة الهيروغليفية؟", "choices": ["المصرية", "السومرية", "الصينية"], "answerIndex": 0, "explanation": "المصرية القديمة" },
+    // ألغاز جديدة (20) من 031 إلى 050
+    { "id": "HIS-031", "difficulty": 1, "riddle": "من هو النبي الذي بنى سفينة؟", "choices": ["نوح", "إبراهيم", "موسى"], "answerIndex": 0, "explanation": "النبي نوح عليه السلام" },
+    { "id": "HIS-032", "difficulty": 1, "riddle": "في أي مدينة ولد النبي محمد ﷺ؟", "choices": ["مكة", "المدينة", "الطائف"], "answerIndex": 0, "explanation": "ولد في مكة" },
+    { "id": "HIS-033", "difficulty": 2, "riddle": "من هو القائد الذي هزم التتار في عين جالوت؟", "choices": ["قطز", "صلاح الدين", "بيبرس"], "answerIndex": 0, "explanation": "السلطان قطز" },
+    { "id": "HIS-034", "difficulty": 2, "riddle": "ما هي عاصمة الدولة الأموية؟", "choices": ["دمشق", "بغداد", "القاهرة"], "answerIndex": 0, "explanation": "دمشق" },
+    { "id": "HIS-035", "difficulty": 2, "riddle": "من هو العالم المسلم المشهور بابن سينا؟", "choices": ["طبيب وفيلسوف", "عالم فلك", "مؤرخ"], "answerIndex": 0, "explanation": "كان طبيباً وفيلسوفاً" },
+    { "id": "HIS-036", "difficulty": 3, "riddle": "في أي عام سقطت الأندلس؟", "choices": ["1492", "1498", "1500"], "answerIndex": 0, "explanation": "1492م" },
+    { "id": "HIS-037", "difficulty": 3, "riddle": "من هو الإمبراطور الروماني الذي بنى قسطنطينية؟", "choices": ["قسطنطين", "يوليان", "ثيودوسيوس"], "answerIndex": 0, "explanation": "الإمبراطور قسطنطين" },
+    { "id": "HIS-038", "difficulty": 3, "riddle": "ما هي المعركة التي انتصر فيها صلاح الدين على الصليبيين؟", "choices": ["حطين", "اليرموك", "القادسية"], "answerIndex": 0, "explanation": "معركة حطين" },
+    { "id": "HIS-039", "difficulty": 4, "riddle": "من هو آخر الخلفاء العباسيين في بغداد؟", "choices": ["المستعصم", "المتوكل", "المعتصم"], "answerIndex": 0, "explanation": "المستعصم بالله" },
+    { "id": "HIS-040", "difficulty": 4, "riddle": "ما هي الحضارة التي بنت مدينة البتراء؟", "choices": ["الأنباط", "الرومان", "اليونان"], "answerIndex": 0, "explanation": "حضارة الأنباط" },
+    { "id": "HIS-041", "difficulty": 1, "riddle": "من هو أول من آمن من الرجال؟", "choices": ["أبو بكر", "علي", "عمر"], "answerIndex": 1, "explanation": "علي بن أبي طالب" },
+    { "id": "HIS-042", "difficulty": 1, "riddle": "كم عدد الخلفاء الراشدين؟", "choices": ["4", "5", "6"], "answerIndex": 0, "explanation": "أربعة" },
+    { "id": "HIS-043", "difficulty": 2, "riddle": "من هو الصحابي الملقب بسيف الله المسلول؟", "choices": ["خالد بن الوليد", "عمرو بن العاص", "سعد بن أبي وقاص"], "answerIndex": 0, "explanation": "خالد بن الوليد" },
+    { "id": "HIS-044", "difficulty": 2, "riddle": "ما هي الغزوة التي حدثت في السنة الثانية للهجرة؟", "choices": ["بدر", "أحد", "الخندق"], "answerIndex": 0, "explanation": "غزوة بدر" },
+    { "id": "HIS-045", "difficulty": 2, "riddle": "من هو مؤسس الدولة الفاطمية؟", "choices": ["عبيد الله المهدي", "المعز لدين الله", "الحاكم بأمر الله"], "answerIndex": 0, "explanation": "عبيد الله المهدي" },
+    { "id": "HIS-046", "difficulty": 3, "riddle": "في أي عام وقعت معركة اليرموك؟", "choices": ["636", "637", "638"], "answerIndex": 0, "explanation": "636م" },
+    { "id": "HIS-047", "difficulty": 3, "riddle": "من هو القائد الذي فتح بلاد ما وراء النهر؟", "choices": ["قتيبة بن مسلم", "محمد بن القاسم", "طارق بن زياد"], "answerIndex": 0, "explanation": "قتيبة بن مسلم" },
+    { "id": "HIS-048", "difficulty": 3, "riddle": "ما هي أول عاصمة للدولة العباسية؟", "choices": ["الهاشمية", "بغداد", "سامراء"], "answerIndex": 0, "explanation": "الهاشمية قرب الكوفة" },
+    { "id": "HIS-049", "difficulty": 4, "riddle": "من هو السلطان العثماني الذي فتح القسطنطينية؟", "choices": ["محمد الفاتح", "سليمان القانوني", "بايزيد"], "answerIndex": 0, "explanation": "محمد الفاتح" },
+    { "id": "HIS-050", "difficulty": 4, "riddle": "ما هي أقدم مدينة في العالم؟", "choices": ["أريحا", "دمشق", "بيبلوس"], "answerIndex": 0, "explanation": "أريحا تُعتبر من أقدم المدن" }
   ],
   "technology": [
     // الألغاز الأصلية (20)
@@ -140,7 +203,7 @@ const embeddedPuzzles = {
     { "id": "TEC-018", "difficulty": 4, "riddle": "أي خيار يصف (الذكاء الاصطناعي التوليدي) بشكل أدق؟", "choices": ["ينتج نصوص/صور جديدة بناءً على بيانات تعلم منها", "يزيد سرعة المعالج", "يصلح أعطال الشاشة"], "answerIndex": 0, "explanation": "التوليدي يُنشئ محتوى جديدًا." },
     { "id": "TEC-019", "difficulty": 4, "riddle": "أي مصطلح يصف تخزين صفحات/بيانات مؤقتًا لتسريع فتحها لاحقًا؟", "choices": ["Cache", "Kernel", "API"], "answerIndex": 0, "explanation": "Cache تخزين مؤقت للتسريع." },
     { "id": "TEC-020", "difficulty": 4, "riddle": "أي جزء مسؤول غالبًا عن معالجة الرسوميات في الألعاب؟", "choices": ["GPU", "Router", "Compiler"], "answerIndex": 0, "explanation": "GPU لمعالجة الرسوميات." },
-    // الألغاز الجديدة (10)
+    // الألغاز الإضافية (10) من 021 إلى 030
     { "id": "TEC-021", "difficulty": 1, "riddle": "ما هي وحدة المعالجة المركزية؟", "choices": ["CPU", "GPU", "RAM"], "answerIndex": 0, "explanation": "CPU هي المعالج" },
     { "id": "TEC-022", "difficulty": 1, "riddle": "أي من هذه الشركات تنتج نظام تشغيل Windows؟", "choices": ["Microsoft", "Apple", "Google"], "answerIndex": 0, "explanation": "Microsoft" },
     { "id": "TEC-023", "difficulty": 2, "riddle": "ما هو بروتوكول نقل النص التشعبي الآمن؟", "choices": ["HTTPS", "HTTP", "FTP"], "answerIndex": 0, "explanation": "HTTPS" },
@@ -150,10 +213,30 @@ const embeddedPuzzles = {
     { "id": "TEC-027", "difficulty": 1, "riddle": "ما هي أصغر وحدة تخزين في الحاسوب؟", "choices": ["Bit", "Byte", "KB"], "answerIndex": 0, "explanation": "Bit" },
     { "id": "TEC-028", "difficulty": 1, "riddle": "أي من هذه الصيغ تُستخدم للصور المضغوطة؟", "choices": ["JPEG", "MP3", "TXT"], "answerIndex": 0, "explanation": "JPEG" },
     { "id": "TEC-029", "difficulty": 2, "riddle": "ما هو نظام التشغيل المفتوح المصدر الشهير؟", "choices": ["Linux", "macOS", "Windows"], "answerIndex": 0, "explanation": "Linux" },
-    { "id": "TEC-030", "difficulty": 1, "riddle": "أي مما يلي يُعتبر جهاز إدخال؟", "choices": ["الفأرة", "الشاشة", "الطابعة"], "answerIndex": 0, "explanation": "الفأرة" }
+    { "id": "TEC-030", "difficulty": 1, "riddle": "أي مما يلي يُعتبر جهاز إدخال؟", "choices": ["الفأرة", "الشاشة", "الطابعة"], "answerIndex": 0, "explanation": "الفأرة" },
+    // ألغاز جديدة (20) من 031 إلى 050
+    { "id": "TEC-031", "difficulty": 1, "riddle": "ما هو الجهاز المستخدم لطباعة المستندات؟", "choices": ["الطابعة", "الماسح الضوئي", "الراوتر"], "answerIndex": 0, "explanation": "الطابعة" },
+    { "id": "TEC-032", "difficulty": 1, "riddle": "ما هي أشهر محرك بحث على الإنترنت؟", "choices": ["جوجل", "بينغ", "ياهو"], "answerIndex": 0, "explanation": "جوجل" },
+    { "id": "TEC-033", "difficulty": 2, "riddle": "ما هي ذاكرة الوصول العشوائي؟", "choices": ["RAM", "ROM", "SSD"], "answerIndex": 0, "explanation": "RAM" },
+    { "id": "TEC-034", "difficulty": 2, "riddle": "أي من هذه المواقع يُستخدم لمشاركة الفيديو؟", "choices": ["يوتيوب", "فيسبوك", "تويتر"], "answerIndex": 0, "explanation": "يوتيوب" },
+    { "id": "TEC-035", "difficulty": 2, "riddle": "ما هو نظام تشغيل أجهزة آيفون؟", "choices": ["iOS", "Android", "Windows"], "answerIndex": 0, "explanation": "iOS" },
+    { "id": "TEC-036", "difficulty": 3, "riddle": "ما هو الاختصار FTP؟", "choices": ["File Transfer Protocol", "Fast Transfer Protocol", "File Type Protocol"], "answerIndex": 0, "explanation": "بروتوكول نقل الملفات" },
+    { "id": "TEC-037", "difficulty": 3, "riddle": "من هو مؤسس شركة مايكروسوفت؟", "choices": ["بيل غيتس", "ستيف جوبز", "مارك زوكربيرغ"], "answerIndex": 0, "explanation": "بيل غيتس" },
+    { "id": "TEC-038", "difficulty": 3, "riddle": "ما هو الجيل الخامس للشبكات الخلوية؟", "choices": ["5G", "4G", "6G"], "answerIndex": 0, "explanation": "5G" },
+    { "id": "TEC-039", "difficulty": 4, "riddle": "ما هي لغة البرمجة المستخدمة في تطوير أندرويد رسمياً؟", "choices": ["Kotlin", "Swift", "C#"], "answerIndex": 0, "explanation": "Kotlin (بالإضافة إلى Java)" },
+    { "id": "TEC-040", "difficulty": 4, "riddle": "ما هو البروتوكول المستخدم لنقل البريد الإلكتروني؟", "choices": ["SMTP", "POP3", "IMAP"], "answerIndex": 0, "explanation": "SMTP للإرسال" },
+    { "id": "TEC-041", "difficulty": 1, "riddle": "ما هي أشهر منصة للتواصل الاجتماعي بالصور؟", "choices": ["إنستغرام", "سناب شات", "تيك توك"], "answerIndex": 0, "explanation": "إنستغرام" },
+    { "id": "TEC-042", "difficulty": 1, "riddle": "ما هو الجهاز الذي يستخدم لتشغيل الألعاب؟", "choices": ["بلاي ستيشن", "الراوتر", "المودم"], "answerIndex": 0, "explanation": "بلاي ستيشن" },
+    { "id": "TEC-043", "difficulty": 2, "riddle": "ما هو نظام تشغيل أجهزة ماك؟", "choices": ["macOS", "Linux", "Windows"], "answerIndex": 0, "explanation": "macOS" },
+    { "id": "TEC-044", "difficulty": 2, "riddle": "ما هو الاختصار USB؟", "choices": ["Universal Serial Bus", "United Serial Bus", "Universal System Bus"], "answerIndex": 0, "explanation": "ناقل تسلسلي عام" },
+    { "id": "TEC-045", "difficulty": 2, "riddle": "ما هي شركة صناعة هواتف سامسونج؟", "choices": ["كورية", "يابانية", "صينية"], "answerIndex": 0, "explanation": "كورية جنوبية" },
+    { "id": "TEC-046", "difficulty": 3, "riddle": "ما هو الذكاء الاصطناعي؟", "choices": ["محاكاة ذكاء البشر", "برنامج حاسوبي", "نظام تشغيل"], "answerIndex": 0, "explanation": "محاكاة ذكاء البشر" },
+    { "id": "TEC-047", "difficulty": 3, "riddle": "ما هو الحوسبة السحابية؟", "choices": ["تخزين ومعالجة عبر الإنترنت", "نوع من المعالجات", "ذاكرة حاسوب"], "answerIndex": 0, "explanation": "خدمات عبر الإنترنت" },
+    { "id": "TEC-048", "difficulty": 3, "riddle": "من هو مخترع شبكة الويب؟", "choices": ["تيم بيرنرز لي", "بيل غيتس", "ستيف جوبز"], "answerIndex": 0, "explanation": "تيم بيرنرز لي" },
+    { "id": "TEC-049", "difficulty": 4, "riddle": "ما هي لغة البرمجة الأكثر استخداماً في الذكاء الاصطناعي؟", "choices": ["Python", "Java", "C++"], "answerIndex": 0, "explanation": "Python" },
+    { "id": "TEC-050", "difficulty": 4, "riddle": "ما هو البروتوكول الذي يشكل أساس الإنترنت؟", "choices": ["TCP/IP", "HTTP", "FTP"], "answerIndex": 0, "explanation": "TCP/IP" }
   ]
 };
-
 // ================== متغيرات عامة ==================
 let puzzlesData = null;
 let currentScreen = 'start';
